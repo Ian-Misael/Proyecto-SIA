@@ -9,13 +9,23 @@ package com.mycompany.programarehabilitacionfisica;
  *
  * @author iangu
  */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Paciente {
     private String nombre;
     private int edad;
-    private String ocupacion;
-    
-    
+    private String direccion;
+    private String historialMedico;
+    private List<SesionTerapia> sesiones; // Falta crear un metodo relacionado
 
+    public Paciente(String nombre, int edad, String direccion, String historialMedico) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.direccion = direccion;
+        this.historialMedico = historialMedico;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -28,14 +38,20 @@ public class Paciente {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    public String getOcupacion() {
-        return ocupacion;
+
+    public String getDireccion() {
+        return direccion;
     }
-    public void setOcupacion(String ocupacion) {
-        this.ocupacion = ocupacion;
+
+    public String getHistorialMedico() {
+        return historialMedico;
     }
-    
-    
-    
-    
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setHistorialMedico(String historialMedico) {
+        this.historialMedico = historialMedico;
+    }
 }
