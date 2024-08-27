@@ -14,13 +14,15 @@ import java.util.List;
 
 public class Paciente {
     private String nombre;
+    private String rut;
     private int edad;
     private String direccion;
     private String historialMedico;
     private List<SesionTerapia> sesiones; // Falta crear un metodo relacionado
 
-    public Paciente(String nombre, int edad, String direccion, String historialMedico) {
+    public Paciente(String nombre, String rut, int edad, String direccion, String historialMedico) {
         this.nombre = nombre;
+        this.rut = rut;
         this.edad = edad;
         this.direccion = direccion;
         this.historialMedico = historialMedico;
@@ -32,6 +34,15 @@ public class Paciente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+    
     public int getEdad() {
         return edad;
     }
@@ -54,4 +65,5 @@ public class Paciente {
     public void setHistorialMedico(String historialMedico) {
         this.historialMedico = historialMedico;
     }
+    
 }
