@@ -17,6 +17,7 @@ public class ProgramaRehabilitacionFisica {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int opcion;
+        HashMap<String, Paciente> tablaHashPacientes = new HashMap<>();
         
         
         do{
@@ -33,7 +34,60 @@ public class ProgramaRehabilitacionFisica {
             switch(opcion)
             {
                 case 1:
-                    System.out.println("Case 1");
+                    String nombre;
+                    String rut;
+                    int edad;
+                    String direccion;
+                    String historialMedico;
+                   
+                    
+                    System.out.print("Ingrese el nombre del paciente: ");
+                    scanner.nextLine();
+                    nombre = scanner.nextLine();
+                  
+                    System.out.print("Ingrese el rut del paciente: ");
+                    rut = scanner.nextLine();
+                    rut = Utilidades.formatearRut(rut);
+                    
+                    System.out.print("Ingrese la edad del paciente: ");
+                    edad = scanner.nextInt();
+                    
+                    System.out.print("Ingrese la dirección del paciente: ");
+                    scanner.nextLine();
+                    direccion = scanner.nextLine();
+                    
+                    System.out.print("Ingrese el historial medico del paciente: ");
+                    historialMedico = scanner.nextLine();
+                    
+                    Paciente nuevoPaciente = new Paciente(nombre,rut,edad,direccion,historialMedico);
+                    tablaHashPacientes.put(rut, nuevoPaciente);
+                    
+                    /*
+                    Paciente pacienteBuscado = tablaHashPacientes.get("22.236.423-9");
+                    if (pacienteBuscado != null) {
+                        System.out.println("Paciente encontrado: " + pacienteBuscado.getNombre());
+                        System.out.println("rut " + pacienteBuscado.getRut());
+                        System.out.println("edad: " + pacienteBuscado.getEdad());
+                        System.out.println("direccion: " + pacienteBuscado.getDireccion());
+                        System.out.println("historialMedico: " + pacienteBuscado.getHistorialMedico());
+                        
+         
+                    }
+                    else{
+                        System.out.println("Paciente no encontrado.");
+                    
+                    }
+                    
+                    
+                    */
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     //opcion = scanner.nextInt();
                     //while (opcion != 6)
                     //{
@@ -58,6 +112,7 @@ public class ProgramaRehabilitacionFisica {
                     System.out.println("Opcion no valida!!");
                     break;
             }
+            Utilidades.presioneTeclaParaContinuar();
         } while(opcion != 5);
         
     }
