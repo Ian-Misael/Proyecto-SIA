@@ -10,7 +10,9 @@ package com.mycompany.programarehabilitacionfisica;
  * @author iangu
  */
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class Paciente {
     private String nombre;
@@ -27,6 +29,14 @@ public class Paciente {
         this.direccion = direccion;
         this.historialMedico = historialMedico;
     }
+    public Paciente() {
+        this.nombre = "";
+        this.rut = "";
+        this.edad = 0;
+        this.direccion = "";
+        this.historialMedico = "";
+    }
+    
     
     public String getNombre() {
         return nombre;
@@ -64,6 +74,51 @@ public class Paciente {
 
     public void setHistorialMedico(String historialMedico) {
         this.historialMedico = historialMedico;
+    }
+    
+    public void agregarPaciente(Scanner scanner, HashMap<String, Paciente> mapaPacientes)
+    {
+        System.out.print("Ingrese el nombre del paciente: ");
+        scanner.nextLine();
+        nombre = scanner.nextLine();
+                  
+        System.out.print("Ingrese el rut del paciente: ");
+        rut = scanner.nextLine();
+        rut = Utilidades.formatearRut(rut);
+        
+        while(true)
+        {
+            System.out.print("Ingrese la edad del paciente: ");
+            
+            if (scanner.hasNextInt())
+            {
+                edad = scanner.nextInt();
+                scanner.nextLine();
+                if (edad < 0)
+                {
+                    System.out.print("Ingrese una edad valida: ");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else
+            {
+                scanner.nextLine();
+            }
+            
+        }
+                   
+        System.out.print("Ingrese la dirección del paciente: ");
+        //scanner.nextLine();
+        direccion = scanner.nextLine();
+                    
+        System.out.print("Ingrese el historial medico del paciente: ");
+        historialMedico = scanner.nextLine();
+        
+        
+        mapaPacientes.put(rut, this);
     }
     
 }
