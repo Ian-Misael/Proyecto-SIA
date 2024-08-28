@@ -1,27 +1,17 @@
 package com.mycompany.programarehabilitacionfisica;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author iangu
- */
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Paciente {
+    
     private String nombre;
     private String rut;
     private int edad;
     private String direccion;
     private String historialMedico;
-    private List<SesionTerapia> sesiones; // Falta crear un metodo relacionado
+    private ArrayList<SesionTerapia> sesiones; // Falta crear un metodo relacionado
 
+    // Métodos Constructores
     public Paciente(String nombre, String rut, int edad, String direccion, String historialMedico) {
         this.nombre = nombre;
         this.rut = rut;
@@ -29,6 +19,7 @@ public class Paciente {
         this.direccion = direccion;
         this.historialMedico = historialMedico;
     }
+    
     public Paciente() {
         this.nombre = "";
         this.rut = "";
@@ -37,7 +28,7 @@ public class Paciente {
         this.historialMedico = "";
     }
     
-    
+    // Métodos Getter y Setter
     public String getNombre() {
         return nombre;
     }
@@ -56,6 +47,7 @@ public class Paciente {
     public int getEdad() {
         return edad;
     }
+    
     public void setEdad(int edad) {
         this.edad = edad;
     }
@@ -76,8 +68,11 @@ public class Paciente {
         this.historialMedico = historialMedico;
     }
     
-    public void agregarPaciente(Scanner scanner, HashMap<String, Paciente> mapaPacientes)
+    // Métodos de la Clase
+    public void agregarPaciente(HashMap<String, Paciente> mapaPacientes)
     {
+        Scanner scanner = new Scanner(System.in);
+        
         System.out.print("Ingrese el nombre del paciente: ");
         scanner.nextLine();
         nombre = scanner.nextLine();
@@ -116,7 +111,6 @@ public class Paciente {
                     
         System.out.print("Ingrese el historial medico del paciente: ");
         historialMedico = scanner.nextLine();
-        
         
         mapaPacientes.put(rut, this);
     }
