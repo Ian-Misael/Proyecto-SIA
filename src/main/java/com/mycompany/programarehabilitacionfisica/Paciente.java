@@ -1,6 +1,7 @@
 package com.mycompany.programarehabilitacionfisica;
 
 import java.util.*;
+import java.time.LocalDate;
 
 public class Paciente {
     
@@ -18,6 +19,7 @@ public class Paciente {
         this.edad = edad;
         this.direccion = direccion;
         this.historialMedico = historialMedico;
+        sesiones = new ArrayList<SesionTerapia>();
     }
     
     public Paciente() {
@@ -26,6 +28,7 @@ public class Paciente {
         this.edad = 0;
         this.direccion = "";
         this.historialMedico = "";
+        sesiones = new ArrayList<SesionTerapia>();
     }
     
     // Métodos Getter y Setter
@@ -69,12 +72,11 @@ public class Paciente {
     }
     
     // Métodos de la Clase
-    public void agregarPaciente(HashMap<String, Paciente> mapaPacientes)
+    public void poblar()
     {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Ingrese el nombre del paciente: ");
-        scanner.nextLine();
         nombre = scanner.nextLine();
                   
         System.out.print("Ingrese el rut del paciente: ");
@@ -111,8 +113,17 @@ public class Paciente {
                     
         System.out.print("Ingrese el historial medico del paciente: ");
         historialMedico = scanner.nextLine();
-        
-        mapaPacientes.put(rut, this);
     }
-    
+    public void mostrarDatos(){
+        System.out.println("\n"+nombre);
+        System.out.println(rut);
+        System.out.println(historialMedico);
+        for(SesionTerapia sesion : sesiones) {
+            System.out.println(sesion.getFecha());
+        } 
+    }
+    public void agregarSesion(LocalDate fecha){
+        SesionTerapia nueva = new SesionTerapia(fecha);
+        sesiones.add(nueva);
+    }
 }
