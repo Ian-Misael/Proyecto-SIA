@@ -61,12 +61,12 @@ public class Utilidades {
     }
     
     /*
-    public static void getchar()
+    public static void getchar(Scanner scanner)
     {
-        Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
     */
+    
     
 }
 
