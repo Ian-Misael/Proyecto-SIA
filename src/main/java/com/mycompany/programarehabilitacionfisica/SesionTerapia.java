@@ -1,28 +1,36 @@
 package com.mycompany.programarehabilitacionfisica;
+import java.time.LocalDate;
 
 public class SesionTerapia {
     
-    private String fecha;
+    private LocalDate fecha;
     private String tipoTerapia;
     private String duracion;
     private String observaciones;
     private int calificacionMejora;
 
     // Métodos Constructores
-    public SesionTerapia(String fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora) {
+    public SesionTerapia(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora) {
         this.fecha = fecha;
         this.tipoTerapia = tipoTerapia;
         this.duracion = duracion;
         this.observaciones = observaciones;
         this.calificacionMejora = calificacionMejora;
     }
+    public SesionTerapia(LocalDate fecha){
+        this.fecha = fecha;
+        this.tipoTerapia = "";
+        this.duracion = "";
+        this.observaciones = "";
+        this.calificacionMejora = 0;
+    }
 
     // Métodos Getter y Setter
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
     
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
