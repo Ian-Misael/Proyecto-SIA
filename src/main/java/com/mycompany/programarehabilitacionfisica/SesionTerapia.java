@@ -1,4 +1,5 @@
 package com.mycompany.programarehabilitacionfisica;
+
 import java.time.LocalDate;
 
 public class SesionTerapia {
@@ -68,4 +69,13 @@ public class SesionTerapia {
     
     // Métodos de la Clase
     
+    public void mostrarSesion(int num) {
+        System.out.println("Sesion " + num);
+        System.out.println("Fecha: " + fecha);
+        System.out.println("Tipo de terapia: " + tipoTerapia);
+        System.out.println("Duracion: " + duracion);
+        System.out.println("Observacion: " + observaciones);
+        System.out.println("Calificacion de mejora: " + calificacionMejora);
+        System.out.println("---------------------------------------");
+    }
 }
