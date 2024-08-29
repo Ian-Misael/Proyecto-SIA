@@ -96,10 +96,10 @@ public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPac
                 System.out.println("---------------------------------------");
                 
                 for (Paciente paciente : tablaHashPacientes.values()) {
-                System.out.println(" Nombre: " + paciente.getNombre());
-                System.out.println(" RUT: " + paciente.getRut());
-                System.out.println(" Edad: " + paciente.getEdad());
-                System.out.println("---------------------------------------");
+                    System.out.println(" Nombre: " + paciente.getNombre());
+                    System.out.println(" RUT: " + paciente.getRut());
+                    System.out.println(" Edad: " + paciente.getEdad());
+                    System.out.println("---------------------------------------");
                 }
                 System.out.println("");
                 break;
