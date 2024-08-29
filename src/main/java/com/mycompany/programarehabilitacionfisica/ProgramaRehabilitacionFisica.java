@@ -42,7 +42,6 @@ public class ProgramaRehabilitacionFisica {
     
 public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPacientes) throws IOException {
     BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     switch (opcion) {
         case 1:
@@ -64,38 +63,7 @@ public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPac
             String rutAux = lector.readLine();
             rutAux = Utilidades.formatearRut(rutAux);
             Paciente pacienteActual = tablaHashPacientes.get(rutAux);
-
-            if (pacienteActual != null) {
-                Utilidades.limpiarPantalla();
-                System.out.print("Ingrese la fecha de la sesion (dd/MM/yyyy): ");
-                String inputFecha = lector.readLine();
-                try {
-                    LocalDate fecha = LocalDate.parse(inputFecha, formatter);
-
-                    // Solicitar más detalles sobre la sesión
-                    System.out.print("Ingrese el tipo de terapia: ");
-                    String tipoTerapia = lector.readLine();
-
-                    System.out.print("Ingrese la duracion de la terapia: ");
-                    String duracion = lector.readLine();
-
-                    System.out.print("Ingrese observaciones: ");
-                    String observaciones = lector.readLine();
-
-                    System.out.print("Ingrese la calificacion de mejora (1-10): ");
-                    int calificacionMejora = Integer.parseInt(lector.readLine());
-
-                    // Crear una nueva sesión de terapia con los detalles ingresados
-                    SesionTerapia nuevaSesion = new SesionTerapia(fecha, tipoTerapia, duracion, observaciones, calificacionMejora);
-                    pacienteActual.agregarSesion(nuevaSesion);
-
-                    System.out.println("\nSesion registrada con exito.\n");
-                } catch (DateTimeParseException e) {
-                    System.out.println("\nFecha ingresada no valida. Asegurese de usar el formato dd/MM/yyyy.\n");
-                }
-            } else {
-                System.out.println("\nPaciente no encontrado.\n");
-            }
+            registroSesion(pacienteActual);
             break;
         case 4:
             Utilidades.limpiarPantalla();
@@ -154,10 +122,47 @@ public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPac
         }
     }
     
+    public static void registroSesion(Paciente pacienteActual) throws IOException {
+        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        if (pacienteActual != null) {
+            Utilidades.limpiarPantalla();
+            System.out.print("Ingrese la fecha de la sesion (dd/MM/yyyy): ");
+            String inputFecha = lector.readLine();
+            try {
+                LocalDate fecha = LocalDate.parse(inputFecha, formatter);
+
+                // Solicitar más detalles sobre la sesión
+                System.out.print("Ingrese el tipo de terapia: ");
+                String tipoTerapia = lector.readLine();
+
+                System.out.print("Ingrese la duracion de la terapia: ");
+                String duracion = lector.readLine();
+
+                System.out.print("Ingrese observaciones: ");
+                String observaciones = lector.readLine();
+
+                System.out.print("Ingrese la calificacion de mejora (1-10): ");
+                int calificacionMejora = Integer.parseInt(lector.readLine());
+
+                // Crear una nueva sesión de terapia con los detalles ingresados
+                SesionTerapia nuevaSesion = new SesionTerapia(fecha, tipoTerapia, duracion, observaciones, calificacionMejora);
+                pacienteActual.agregarSesion(nuevaSesion);
+                nuevaSesion.mostrarSesion();
+                System.out.println("\nSesion registrada con exito.\n");
+            } catch (DateTimeParseException e) {
+                System.out.println("\nFecha ingresada no valida. Asegurese de usar el formato dd/MM/yyyy.\n");
+            }
+        } else {
+            System.out.println("\nPaciente no encontrado.\n");
+        }
+    }
+    
     public static void ingresoCasos(HashMap<String, Paciente> tablaHashPacientes) {
         Paciente paciente1 = new Paciente("Juan","20.180.417-5", 25, "Viña del Mar", "Resfriado");
         Paciente paciente2 = new Paciente("Felipe","21.734.001-2", 20, "Quilpue", "Hemorroides");
-        Paciente paciente3 = new Paciente("Ian","21.584.598-2", 20, "Quilpue", "Muerto");
+        Paciente paciente3 = new Paciente("Ian","21.584.598-2", 20, "Quilpue", "Dicenteria");
         
         paciente1.agregarSesion(LocalDate.now());
         paciente2.agregarSesion(LocalDate.of(2004, 12, 20));
