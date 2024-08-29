@@ -11,8 +11,7 @@ public class Utilidades {
         }
     }
     
-    public static String formatearRut(String rut)
-    {
+    public static String formatearRut(String rut) {
         rut = rut.replace(".", "");
         rut = rut.replace("-", "");
         String rutFormateado = "";
@@ -44,14 +43,7 @@ public class Utilidades {
         //enter = scanner.nextLine();
         enter = scanner.nextLine();
     }
-    
-    /*
-    public static void getchar(Scanner scanner)
-    {
-        scanner.nextLine();
-    }
-    */
-    
+
     
 }
 
