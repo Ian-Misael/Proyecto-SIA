@@ -1,16 +1,22 @@
 package com.mycompany.programarehabilitacionfisica;
 
-import java.util.*;
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.time.LocalDate;
 
+
 public class Paciente {
+    BufferedReader lector = new BufferedReader (new InputStreamReader(System.in));
     
     private String nombre;
     private String rut;
     private int edad;
     private String direccion;
     private String historialMedico;
-    private ArrayList<SesionTerapia> sesiones; // Falta crear un metodo relacionado
+    private ArrayList<SesionTerapia> sesiones;
 
     // Métodos Constructores
     public Paciente(String nombre, String rut, int edad, String direccion, String historialMedico) {
@@ -19,7 +25,7 @@ public class Paciente {
         this.edad = edad;
         this.direccion = direccion;
         this.historialMedico = historialMedico;
-        sesiones = new ArrayList<SesionTerapia>();
+        sesiones = new ArrayList();
     }
     
     public Paciente() {
@@ -28,7 +34,7 @@ public class Paciente {
         this.edad = 0;
         this.direccion = "";
         this.historialMedico = "";
-        sesiones = new ArrayList<SesionTerapia>();
+        sesiones = new ArrayList();
     }
     
     // Métodos Getter y Setter
@@ -52,6 +58,10 @@ public class Paciente {
     }
     
     public void setEdad(int edad) {
+        if (edad <= 0) {
+            // Aquí se lanza una excepción si la edad es inválida
+            throw new IllegalArgumentException("La edad debe ser un número positivo.");
+        }
         this.edad = edad;
     }
 
@@ -72,15 +82,14 @@ public class Paciente {
     }
     
     // Métodos de la Clase
-    public void poblar()
-    {
+    public void poblar() throws IOException {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Ingrese el nombre del paciente: ");
-        nombre = scanner.nextLine();
+        nombre = lector.readLine();
                   
         System.out.print("Ingrese el rut del paciente: ");
-        rut = scanner.nextLine();
+        rut = lector.readLine();
         rut = Utilidades.formatearRut(rut);
         
         while(true)
@@ -107,23 +116,35 @@ public class Paciente {
             
         }
                    
-        System.out.print("Ingrese la dirección del paciente: ");
+        System.out.print("Ingrese la direccion del paciente: ");
         //scanner.nextLine();
-        direccion = scanner.nextLine();
+        direccion = lector.readLine();
                     
         System.out.print("Ingrese el historial medico del paciente: ");
-        historialMedico = scanner.nextLine();
+        historialMedico = lector.readLine();
     }
-    public void mostrarDatos(){
-        System.out.println("\n"+nombre);
-        System.out.println(rut);
-        System.out.println(historialMedico);
+    
+    public void mostrarDatos() {
+        Utilidades.limpiarPantalla();
+        System.out.println("--- Informacion del Paciente ---\n");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("RUT: " + rut);
+        System.out.println("Historial Medico: " + historialMedico);
+        System.out.println("\n-- Registro de Sesiones --\n");
+        int i = 1;
+        System.out.println("---------------------------------------");
         for(SesionTerapia sesion : sesiones) {
-            System.out.println(sesion.getFecha());
+            sesion.mostrarSesion(i);
+            i++;
         } 
     }
+    
     public void agregarSesion(LocalDate fecha){
         SesionTerapia nueva = new SesionTerapia(fecha);
         sesiones.add(nueva);
+    }
+    
+    public void agregarSesion(SesionTerapia sesion) {
+        sesiones.add(sesion);
     }
 }
