@@ -43,8 +43,6 @@ public class Utilidades {
         //enter = scanner.nextLine();
         enter = scanner.nextLine();
     }
-
-    
 }
 
 
