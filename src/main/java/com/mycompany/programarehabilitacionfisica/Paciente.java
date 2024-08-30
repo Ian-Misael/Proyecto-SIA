@@ -97,12 +97,12 @@ public class Paciente {
         try {
             edad = Integer.parseInt(input);
             if (edad < 0) {
-                System.out.println("Ingrese una edad válida.");
+                System.out.println("Ingrese una edad valida.");
             } else {
                 break;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Ingrese un número válido para la edad.");
+            System.out.println("Ingrese un numero valido para la edad.");
         }
     }
         System.out.print("Ingrese la direccion del paciente: ");
