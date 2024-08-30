@@ -9,7 +9,6 @@ import java.time.LocalDate;
 
 
 public class Paciente {
-    BufferedReader lector = new BufferedReader (new InputStreamReader(System.in));
     
     private String nombre;
     private String rut;
@@ -83,7 +82,7 @@ public class Paciente {
     
     // Métodos de la Clase
     public void poblar() throws IOException {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         
         System.out.print("Ingrese el nombre del paciente: ");
         nombre = lector.readLine();
@@ -92,30 +91,20 @@ public class Paciente {
         rut = lector.readLine();
         rut = Utilidades.formatearRut(rut);
         
-        while(true)
-        {
-            System.out.print("Ingrese la edad del paciente: ");
-            
-            if (scanner.hasNextInt())
-            {
-                edad = scanner.nextInt();
-                scanner.nextLine();
-                if (edad < 0)
-                {
-                    System.out.print("Ingrese una edad valida: ");
-                }
-                else
-                {
-                    break;
-                }
+     while (true) {
+        System.out.print("Ingrese la edad del paciente: ");
+        String input = lector.readLine();
+        try {
+            edad = Integer.parseInt(input);
+            if (edad < 0) {
+                System.out.println("Ingrese una edad válida.");
+            } else {
+                break;
             }
-            else
-            {
-                scanner.nextLine();
-            }
-            
+        } catch (NumberFormatException e) {
+            System.out.println("Ingrese un número válido para la edad.");
         }
-                   
+    }
         System.out.print("Ingrese la direccion del paciente: ");
         //scanner.nextLine();
         direccion = lector.readLine();
