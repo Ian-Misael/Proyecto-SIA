@@ -1,5 +1,6 @@
-package com.mycompany.programarehabilitacionfisica;
+package Clases;
 
+import com.mycompany.programarehabilitacionfisica.Utilidades;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,5 +1,8 @@
 
 package com.mycompany.programarehabilitacionfisica;
+import Clases.SesionTerapia;
+import Clases.Paciente;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
