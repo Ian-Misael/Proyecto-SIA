@@ -22,20 +22,19 @@ public class ProgramaRehabilitacionFisica {
         BufferedReader lector = new BufferedReader (new InputStreamReader(System.in));
         
         // Se ingresan ejemplos
-        //ingresoCasos(tablaHashPacientes);
         Utilidades.leerArchivoPacientes(tablaHashPacientes);
         Utilidades.leerArchivoSesiones(tablaHashPacientes); 
         
-        int opcion;
+        String opcion;
         
         // Operación Principal del Menú
         do {
             menu();
-            opcion = Integer.parseInt(lector.readLine());
+            opcion = lector.readLine();
             opcionMenu(opcion, tablaHashPacientes);
             Utilidades.presioneTeclaParaContinuar();
             
-        } while(opcion != 5);
+        } while(!opcion.equals("5"));
     }
     
     public static void menu() {
@@ -48,24 +47,24 @@ public class ProgramaRehabilitacionFisica {
         System.out.println(" 5. Salir");
     }
     
-public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPacientes) throws IOException {
+public static void opcionMenu(String opcion, HashMap<String, Paciente> tablaHashPacientes) throws IOException {
     BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
 
     switch (opcion) {
-        case 1:
+        case "1":
             Utilidades.limpiarPantalla();
             System.out.println("--- Registro de Paciente ---\n");
             Paciente nuevoPaciente = new Paciente();
             nuevoPaciente.poblar();
             tablaHashPacientes.put(nuevoPaciente.getRut(), nuevoPaciente);
             break;
-        case 2:
+        case "2":
             Utilidades.limpiarPantalla();
             menu2();
             int opcion2 = Integer.parseInt(lector.readLine());
             opcionMenu2(opcion2, tablaHashPacientes);
             break;
-        case 3:
+        case "3":
             Utilidades.limpiarPantalla();
             System.out.print("Ingrese el rut del paciente: ");
             String rutAux = lector.readLine();
@@ -73,12 +72,12 @@ public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPac
             Paciente pacienteActual = tablaHashPacientes.get(rutAux);
             registroSesion(pacienteActual);
             break;
-        case 4:
+        case "4":
             Utilidades.limpiarPantalla();
             System.out.println("Funcionalidad de Reporte Progreso en desarrollo.");
             break;
         default:
-            if (opcion == 5) {
+            if (opcion.equals("5")) {
                 System.out.println("Saliendo del programa....");
             } else {
                 System.out.println("Opcion no valida!!");
@@ -167,27 +166,6 @@ public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPac
         } else {
             System.out.println("\nPaciente no encontrado.\n");
         }
-    }
-    
-    public static void ingresoCasos(HashMap<String, Paciente> tablaHashPacientes) {
-        Paciente paciente1 = new Paciente("Juan","20.180.417-5", 25, "Viña del Mar", "Resfriado");
-        Paciente paciente2 = new Paciente("Felipe","21.734.001-2", 20, "Quilpue", "Hemorroides");
-        Paciente paciente3 = new Paciente("Ian","21.584.598-2", 20, "Quilpue", "Dicenteria");
-        
-        paciente1.agregarSesion(LocalDate.now());
-        paciente2.agregarSesion(LocalDate.of(2004, 12, 20));
-        paciente3.agregarSesion(LocalDate.of(2022, 4, 10));
-        
-        SesionTerapia sesion11 = new SesionTerapia(LocalDate.of(2074, 3, 8), "Conductual", "4 Horas", "Mantiene las apuestas en casinos", 2);
-        paciente1.agregarSesion(sesion11);
-        SesionTerapia sesion21 = new SesionTerapia(LocalDate.of(2019, 10, 10), "Logoterapia", "30 Minutos", "Aun no encuentra el sentido de la Vida", 5);
-        paciente2.agregarSesion(sesion21);
-        SesionTerapia sesion31 = new SesionTerapia(LocalDate.of(2004, 5, 25), "Psicoanalitica", "1 Hora", "Presenta estres academico", 3);
-        paciente3.agregarSesion(sesion31);
-        
-        tablaHashPacientes.put(paciente1.getRut(),paciente1);
-        tablaHashPacientes.put(paciente2.getRut(),paciente2);
-        tablaHashPacientes.put(paciente3.getRut(),paciente3);
     }
 }
 
