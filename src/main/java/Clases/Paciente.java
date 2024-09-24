@@ -1,6 +1,5 @@
 package Clases;
 
-import com.mycompany.programarehabilitacionfisica.Utilidades;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -112,6 +111,8 @@ public class Paciente {
                     
         System.out.print("Ingrese el historial medico del paciente: ");
         historialMedico = lector.readLine();
+        
+        Utilidades.guardarPacienteCSV(nombre,rut, edad, direccion, historialMedico);
     }
     
     public void mostrarDatos() {
