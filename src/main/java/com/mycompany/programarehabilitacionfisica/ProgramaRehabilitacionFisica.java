@@ -1,5 +1,6 @@
 
 package com.mycompany.programarehabilitacionfisica;
+import Clases.Utilidades;
 import Clases.SesionTerapia;
 import Clases.Paciente;
 
@@ -19,7 +20,9 @@ public class ProgramaRehabilitacionFisica {
         BufferedReader lector = new BufferedReader (new InputStreamReader(System.in));
         
         // Se ingresan ejemplos
-        ingresoCasos(tablaHashPacientes);
+        //ingresoCasos(tablaHashPacientes);
+        Utilidades.leerArchivoPacientes(tablaHashPacientes);
+        Utilidades.leerArchivoSesiones(tablaHashPacientes); 
         
         int opcion;
         
@@ -153,6 +156,8 @@ public static void opcionMenu(int opcion, HashMap<String, Paciente> tablaHashPac
                 SesionTerapia nuevaSesion = new SesionTerapia(fecha, tipoTerapia, duracion, observaciones, calificacionMejora);
                 pacienteActual.agregarSesion(nuevaSesion);
                 nuevaSesion.mostrarSesion();
+                
+                Utilidades.guardarSesionesCSV(fecha, tipoTerapia, duracion, observaciones, calificacionMejora, pacienteActual.getRut());
                 System.out.println("\nSesion registrada con exito.\n");
             } catch (DateTimeParseException e) {
                 System.out.println("\nFecha ingresada no valida. Asegurese de usar el formato dd/MM/yyyy.\n");
