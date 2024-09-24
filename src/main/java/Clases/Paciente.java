@@ -112,6 +112,7 @@ public class Paciente {
         historialMedico = lector.readLine();
         
         Utilidades.guardarPacienteCSV(nombre,rut, edad, direccion, historialMedico);
+        
     }
     
     public void mostrarDatos() {
