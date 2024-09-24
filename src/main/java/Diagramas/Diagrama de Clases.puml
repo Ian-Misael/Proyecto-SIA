@@ -1,0 +1,69 @@
+@startuml Programa
+
+title Diagrama de Clases
+header Proyecto
+footer Diagrama 1
+
+class Centro {
+    - String direccion
+    - long capacidad
+    - long terapeutas
+    - Sesion sesiones
+    - long pacientes
+    
+}
+
+class Persona {
+    - int rut
+    - String nombre
+    - int edad
+
+    + void setRut()
+    + int getRut()
+    + void setNombre()
+    + String getNombre()
+    + void setEdad()
+    + int getEdad()
+    + String toString()
+}
+
+class Paciente {
+    - String ubicacion
+    - String historial
+    - Sesion sesiones
+    
+    + void setUbicacion()
+    + String getUbicacion()
+    + void setHistorial()
+    + String getHistorial()
+
+    + Sesion obtenerSesiones()
+    + void agregarSesion()
+    + void eliminarSesion(sesion)
+    + String toString()
+}
+
+class Terapeuta {
+    - String especialidad
+    
+    - Sesion sesiones
+    
+    
+    + String toString()
+}
+
+class Sesion {
+    - HashMap sesionMap
+    - ArrayList sesionArray
+
+    + obtenerSesion()
+}
+
+note top of Sesion : Es una clase para manejar registros de sesiones
+
+
+Centro -[#black]-* Persona : Contiene
+Persona --|> Paciente : Es
+Persona --|> Terapeuta : Es
+
+@enduml

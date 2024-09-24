@@ -13,7 +13,7 @@ public class Paciente {
     private String nombre;
     private String rut;
     private int edad;
-    private String direccion;
+    private String ubicacion;
     private String historialMedico;
     private ArrayList<SesionTerapia> sesiones;
 
@@ -22,7 +22,7 @@ public class Paciente {
         this.nombre = nombre;
         this.rut = rut;
         this.edad = edad;
-        this.direccion = direccion;
+        this.ubicacion = direccion;
         this.historialMedico = historialMedico;
         sesiones = new ArrayList();
     }
@@ -31,7 +31,7 @@ public class Paciente {
         this.nombre = "";
         this.rut = "";
         this.edad = 0;
-        this.direccion = "";
+        this.ubicacion = "";
         this.historialMedico = "";
         sesiones = new ArrayList();
     }
@@ -64,16 +64,15 @@ public class Paciente {
         this.edad = edad;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
+    public void setUbicacion(String direccion) {
+        this.ubicacion = direccion;
+    }
     public String getHistorialMedico() {
         return historialMedico;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public void setHistorialMedico(String historialMedico) {
@@ -105,14 +104,14 @@ public class Paciente {
             System.out.println("Ingrese un numero valido para la edad.");
         }
     }
-        System.out.print("Ingrese la direccion del paciente: ");
+        System.out.print("Ingrese la ubicacion del paciente: ");
         //scanner.nextLine();
-        direccion = lector.readLine();
+        ubicacion = lector.readLine();
                     
         System.out.print("Ingrese el historial medico del paciente: ");
         historialMedico = lector.readLine();
         
-        Utilidades.guardarPacienteCSV(nombre,rut, edad, direccion, historialMedico);
+        Utilidades.guardarPacienteCSV(nombre,rut, edad, ubicacion, historialMedico);
     }
     
     public void mostrarDatos() {

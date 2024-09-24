@@ -3,6 +3,7 @@ package com.mycompany.programarehabilitacionfisica;
 import Clases.Utilidades;
 import Clases.SesionTerapia;
 import Clases.Paciente;
+//import Errores.RutInvalidoException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+// ======================== CONTROLADOR ========================
 public class ProgramaRehabilitacionFisica {
     
     public static void main(String[] args) throws IOException {

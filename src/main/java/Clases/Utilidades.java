@@ -55,34 +55,34 @@ public class Utilidades {
     
     public static void leerArchivoPacientes(Map<String, Paciente> tablaHashPacientes)
     {
-         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoPacientes.csv")))
-         {
-             String linea;
-             linea = reader.readLine(); // Para leer lo primero (rut, nombre...)
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoPacientes.csv")))
+        {
+            String linea;
+            linea = reader.readLine(); // Para leer lo primero (rut, nombre...)
              
-             while ((linea = reader.readLine())!= null)
-             {
-                 String rut;
-                 String nombre;
-                 String edadSTR;
-                 String direccion;
-                 String historialMedico;
+            while ((linea = reader.readLine())!= null)
+            {
+                String rut;
+                String nombre;
+                String edadSTR;
+                String direccion;
+                String historialMedico;
                  
-                 String[] campos = linea.split(";");
-                 nombre = campos[0];
-                 rut = formatearRut(campos[1]);
-                 edadSTR =  campos[2];
-                 direccion = campos[3];
-                 historialMedico = campos[4];
+                String[] campos = linea.split(";");
+                nombre = campos[0];
+                rut = formatearRut(campos[1]);
+                edadSTR =  campos[2];
+                direccion = campos[3];
+                historialMedico = campos[4];
                  
-                 int edad = Integer.parseInt(edadSTR); // Se confia que el numero guardado en el excel es un numero.
+                int edad = Integer.parseInt(edadSTR); // Se confia que el numero guardado en el excel es un numero.
                  
-                 Paciente paciente = new Paciente(nombre, rut, edad, direccion, historialMedico);
-                 tablaHashPacientes.put(paciente.getRut(),paciente);
-             } 
-         } catch(IOException e){
-             System.out.println("No se pudo leer correctamente, excepcion");
-         }
+                Paciente paciente = new Paciente(nombre, rut, edad, direccion, historialMedico);
+                tablaHashPacientes.put(paciente.getRut(),paciente);
+            } 
+        } catch(IOException e){
+            System.out.println("No se pudo leer correctamente, excepcion");
+        }
     } 
     public static void guardarPacienteCSV(String nombre, String rut, int edad, String direccion, String historialMedico)
     {
@@ -115,30 +115,30 @@ public class Utilidades {
     public static void leerArchivoSesiones(Map<String, Paciente> tablaHashPacientes)
     {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoSesiones.csv")))
-         {
-             String linea;
-             linea = reader.readLine(); // Para leer lo primero (rut, nombre...)
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoSesiones.csv")))
+        {
+            String linea;
+            linea = reader.readLine(); // Para leer lo primero (rut, nombre...)
              
-             while ((linea = reader.readLine())!= null)
-             {
-                 String rut;
-                 String fechaSTR;
-                 String tipoTerapia;
-                 String duracion;
-                 String observaciones;
-                 String calificacionMejoraSTR;
+            while ((linea = reader.readLine())!= null)
+            {
+                String rut;
+                String fechaSTR;
+                String tipoTerapia;
+                String duracion;
+                String observaciones;
+                String calificacionMejoraSTR;
                  
-                 String[] campos = linea.split(";");
-                 rut = campos[0];
-                 fechaSTR = campos[1]; 
-                 tipoTerapia =  campos[2];
-                 duracion = campos[3];
-                 observaciones = campos[4];
-                 calificacionMejoraSTR = campos[5];
+                String[] campos = linea.split(";");
+                rut = campos[0];
+                fechaSTR = campos[1]; 
+                tipoTerapia =  campos[2];
+                duracion = campos[3];
+                observaciones = campos[4];
+                calificacionMejoraSTR = campos[5];
                  
-                 LocalDate fecha = LocalDate.parse(fechaSTR, formato); // Se confia que la fecha esta en el formato correcto.
-                 int calificacionMejora = Integer.parseInt(calificacionMejoraSTR); // Se confia que el numero guardado en el excel es un numero.
+                LocalDate fecha = LocalDate.parse(fechaSTR, formato); // Se confia que la fecha esta en el formato correcto.
+                int calificacionMejora = Integer.parseInt(calificacionMejoraSTR); // Se confia que el numero guardado en el excel es un numero.
                  
                 Paciente pacienteActual = tablaHashPacientes.get(rut);
                 if (pacienteActual != null) {
@@ -146,12 +146,11 @@ public class Utilidades {
                     pacienteActual.agregarSesion(nuevaSesion);
                 } else {
                     System.out.println("\nPaciente no encontrado.\n");
-                }
-                
-             } 
-         } catch(IOException e){
-             System.out.println("No se pudo leer correctamente, excepcion");
-         }        
+                }  
+            } 
+        } catch(IOException e){
+            System.out.println("No se pudo leer correctamente, excepcion");
+        }        
     }
 }
 
