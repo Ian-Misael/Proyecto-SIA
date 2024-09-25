@@ -17,25 +17,29 @@ class Persona {
     - int rut
     - String nombre
     - int edad
+    - Sesion sesiones
 
-    + void setRut()
     + int getRut()
-    + void setNombre()
+    + void setRut()
     + String getNombre()
-    + void setEdad()
+    + void setNombre()
     + int getEdad()
+    + void setEdad()
+
+    + Sesion obtenerSesiones()
+    + void agregarSesion()
+    + void eliminarSesion(sesion)
     + String toString()
 }
 
 class Paciente {
-    - String ubicacion
+    - String direccion
     - String historial
-    - Sesion sesiones
     
-    + void setUbicacion()
     + String getUbicacion()
-    + void setHistorial()
+    + void setUbicacion()
     + String getHistorial()
+    + void setHistorial()
 
     + Sesion obtenerSesiones()
     + void agregarSesion()
@@ -46,24 +50,38 @@ class Paciente {
 class Terapeuta {
     - String especialidad
     
-    - Sesion sesiones
-    
-    
+    + String getEspecialidad()
+    + void setEspecialidad()
+
+    + Sesion obtenerSesiones()
+    + void agregarSesion()
+    + void eliminarSesion(sesion)
     + String toString()
 }
 
-class Sesion {
-    - HashMap sesionMap
-    - ArrayList sesionArray
+class SesionTerapia {
+    - LocalDate fecha;
+    - String tipoTerapia;
+    - String duracion;
+    - String observaciones;
+    - int calificacionMejora;
 
-    + obtenerSesion()
+    + LocalDate getFecha()
+    + void setFecha(LocalDate fecha)
+    + String getTipoTerapia() 
+    + void setTipoTerapia(String tipoTerapia)
+    + String getDuracion()
+    + void setDuracion(String duracion)
+    + String getObservaciones() 
+    + void setObservaciones(String observaciones)
+    + int getCalificacionMejora()
+    + void setCalificacionMejora(int calificacionMejora)
 }
-
-note top of Sesion : Es una clase para manejar registros de sesiones
-
 
 Centro -[#black]-* Persona : Contiene
 Persona --|> Paciente : Es
 Persona --|> Terapeuta : Es
+Terapeuta --|> SesionTerapia : Contiene
+Paciente --|> SesionTerapia : Contiene
 
 @enduml
