@@ -30,7 +30,6 @@ public class Terapeuta extends Persona {
     public void poblar() throws IOException {
         super.poblar();
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        
         System.out.print("Ingrese la especialidad del terapeuta: ");
         especialidad = lector.readLine();
     }

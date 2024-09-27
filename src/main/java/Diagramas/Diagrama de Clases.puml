@@ -20,12 +20,13 @@ class Persona {
     - Sesion sesiones
 
     + int getRut()
-    + void setRut()
+    + void setRut(int rut)
     + String getNombre()
-    + void setNombre()
+    + void setNombre(String nombre)
     + int getEdad()
-    + void setEdad()
+    + void setEdad(int edad)
 
+    + void poblar()
     + Sesion obtenerSesiones()
     + void agregarSesion()
     + void eliminarSesion(sesion)
@@ -37,10 +38,11 @@ class Paciente {
     - String historial
     
     + String getUbicacion()
-    + void setUbicacion()
+    + void setUbicacion(String ubicacion)
     + String getHistorial()
-    + void setHistorial()
+    + void setHistorial(String historial)
 
+    + void poblar()
     + Sesion obtenerSesiones()
     + void agregarSesion()
     + void eliminarSesion(sesion)
@@ -51,8 +53,9 @@ class Terapeuta {
     - String especialidad
     
     + String getEspecialidad()
-    + void setEspecialidad()
+    + void setEspecialidad(String especialidad)
 
+    + void poblar()
     + Sesion obtenerSesiones()
     + void agregarSesion()
     + void eliminarSesion(sesion)

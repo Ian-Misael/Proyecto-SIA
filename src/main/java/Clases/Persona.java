@@ -1,5 +1,7 @@
 package Clases;
 
+import Errores.EdadInvalidaException;
+import Errores.RutInvalidoException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,37 +33,40 @@ public class Persona {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getRut() {
         return rut;
+    }
+
+    public void setRut(String rut) throws RutInvalidoException {
+        if (rut.matches(".*[a-jl-zA-JL-Z].*")) {
+            throw new RutInvalidoException();
+        }
+        this.rut = rut;
     }
 
     public int getEdad() {
         return edad;
     }
 
+    public void setEdad(int edad) throws EdadInvalidaException {
+        if (edad < 0) {
+            throw new EdadInvalidaException();
+        }
+        this.edad = edad;
+    }
+
     public ArrayList<SesionTerapia> getSesiones() {
         return sesiones;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setRut(String rut) {
-        this.rut = rut;
-    }
-
-    public void setEdad(int edad) {
-        if (edad <= 0) {
-        // Aquí se lanza una excepción si la edad es inválida
-        throw new IllegalArgumentException("La edad debe ser un número positivo.");
-     }
-        this.edad = edad;
     }
 
     public void setSesiones(ArrayList<SesionTerapia> sesiones) {
         this.sesiones = sesiones;
     }
+    
     
     public void poblar() throws IOException {
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));

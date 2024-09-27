@@ -3,7 +3,9 @@ package com.mycompany.programarehabilitacionfisica;
 import Clases.Utilidades;
 import Clases.SesionTerapia;
 import Clases.Paciente;
+import Ventanas.Dashboard;
 //import Errores.RutInvalidoException;
+// InputMismatchException
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +26,7 @@ public class ProgramaRehabilitacionFisica {
         // Se ingresan ejemplos
         Utilidades.leerArchivoPacientes(tablaHashPacientes);
         Utilidades.leerArchivoSesiones(tablaHashPacientes); 
-        
+
         String opcion;
         
         // Operación Principal del Menú

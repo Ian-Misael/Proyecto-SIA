@@ -1,0 +1,24 @@
+@startuml Programa
+
+title Diagrama de Colecciones
+header Proyecto
+footer Diagrama 2
+
+skinparam packageStyle rectangle
+
+package Centro {
+
+}
+package Centro.Paciente <<Folder>> {
+    package Sesiones <<Folder>> {
+        
+    }
+}
+
+package Centro.Terapeuta <<Folder>> {
+    package Sesiones <<Folder>> {
+        
+    }
+}
+
+@enduml
