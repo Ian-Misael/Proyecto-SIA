@@ -1,3 +1,4 @@
+
 package Clases;
 
 import java.util.Scanner;
@@ -49,7 +50,6 @@ public class Utilidades {
         Scanner scanner = new Scanner(System.in);
         String enter;
         System.out.println("Presione enter para continuar..");
-        //enter = scanner.nextLine();
         enter = scanner.nextLine();
     }
     
@@ -97,21 +97,6 @@ public class Utilidades {
         }
     }
     
-    public static void guardarSesionesCSV(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rut)
-    {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String fechaSTR = fecha.format(formato);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoSesiones.csv", true))) {
-             
-            writer.write(rut + ";" + fechaSTR + ";" + tipoTerapia + ";" + duracion + ";" + observaciones + ";" + calificacionMejora);
-            writer.newLine();
-           
-
-        } catch (IOException e) {
-            System.out.println("algo paso, excepcion");
-        }
-
-    }
     public static void leerArchivoSesiones(Map<String, Paciente> tablaHashPacientes)
     {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -152,8 +137,21 @@ public class Utilidades {
             System.out.println("No se pudo leer correctamente, excepcion");
         }        
     }
+    
+    public static void guardarSesionesCSV(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rut)
+    {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaSTR = fecha.format(formato);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoSesiones.csv", true))) {
+             
+            writer.write(rut + ";" + fechaSTR + ";" + tipoTerapia + ";" + duracion + ";" + observaciones + ";" + calificacionMejora);
+            writer.newLine();
+           
+
+        } catch (IOException e) {
+            System.out.println("algo paso, excepcion");
+        }
+
+    }
 }
-
-
-
 

@@ -5,11 +5,12 @@ header Proyecto
 footer Diagrama 1
 
 class Centro {
-    - String direccion
-    - long capacidad
-    - long terapeutas
-    - Sesion sesiones
-    - long pacientes
+    - String nombre
+    - ListaPacientes pacientes
+    - ListaTerapeutas terapeutas
+
+    + Centro(String nombre)
+    
     
 }
 
@@ -17,7 +18,8 @@ class Persona {
     - int rut
     - String nombre
     - int edad
-    - Sesion sesiones
+
+    + Persona(String nombre, String rut, int edad)
 
     + int getRut()
     + void setRut(int rut)
@@ -26,40 +28,63 @@ class Persona {
     + int getEdad()
     + void setEdad(int edad)
 
-    + void poblar()
-    + Sesion obtenerSesiones()
-    + void agregarSesion()
-    + void eliminarSesion(sesion)
-    + String toString()
+    + String obtenerDatos()
+}
+
+class ListaPacientes {
+    - HashMap<String, Paciente> tablaHashPacientes
+
+    + ListaPacientes()
+
+    + boolean agregarPaciente(Paciente paciente)
+    + String listarPacientes()
 }
 
 class Paciente {
     - String direccion
     - String historial
+    - ListaSesiones sesiones
     
+    + Paciente(String nombre, String rut, int edad, String direccion, String historialMedico)
+
     + String getUbicacion()
     + void setUbicacion(String ubicacion)
     + String getHistorial()
     + void setHistorial(String historial)
 
-    + void poblar()
-    + Sesion obtenerSesiones()
-    + void agregarSesion()
-    + void eliminarSesion(sesion)
-    + String toString()
+    + void agregarSesion(SesionTerapia sesion)
+    + String listarSesiones()
+    + String obtenerDatos()
+}
+
+class ListaTerapeutas {
+    - HashMap<String, Terapeuta> tablaHashterapeutas
+
+    + ListaTerapeutas()
+
+    + boolean agregarTerapeuta(Terapeuta terapeuta)
+    + String listarTerapeutas()
 }
 
 class Terapeuta {
     - String especialidad
+
+    + Terapeuta(String nombre, String rut, int edad, String especialidad)
     
     + String getEspecialidad()
     + void setEspecialidad(String especialidad)
 
-    + void poblar()
-    + Sesion obtenerSesiones()
-    + void agregarSesion()
-    + void eliminarSesion(sesion)
-    + String toString()
+    + String obtenerDatos()
+}
+
+class ListaSesiones {
+    - ArrayList<SesionTerapia> lista
+
+    + ListaSesiones()
+
+    + boolean agregarSesion(SesionTerapia sesion)
+    + int largo()
+    + String listarSesiones()
 }
 
 class SesionTerapia {
@@ -68,6 +93,8 @@ class SesionTerapia {
     - String duracion;
     - String observaciones;
     - int calificacionMejora;
+    
+    + SesionTerapia(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora)
 
     + LocalDate getFecha()
     + void setFecha(LocalDate fecha)
@@ -79,12 +106,27 @@ class SesionTerapia {
     + void setObservaciones(String observaciones)
     + int getCalificacionMejora()
     + void setCalificacionMejora(int calificacionMejora)
+
+    + String obtenerDatos()
 }
 
-Centro -[#black]-* Persona : Contiene
+class Utilidades {
+    # void limpiarPantalla()
+    # String formatearRut(String rut)
+    # void presioneTeclaParaContinuar()
+    # void leerArchivoPacientes(Map<String, Paciente> tablaHashPacientes)
+    # void guardarPacienteCSV(String nombre, String rut, int edad, String direccion, String historialMedico)
+    # void leerArchivoSesiones(Map<String, Paciente> tablaHashPacientes)
+    # void guardarSesionesCSV(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rut)
+}
+
+Centro -[#black]-* ListaPacientes : Contiene
 Persona --|> Paciente : Es
 Persona --|> Terapeuta : Es
-Terapeuta --|> SesionTerapia : Contiene
-Paciente --|> SesionTerapia : Contiene
+ListaPacientes --|> Paciente : Contiene
+ListaTerapeutas --|> Terapeuta : Contiene
+Paciente --|> ListaSesiones : Contiene
+Terapeuta --|> ListaSesiones : Contiene
+ListaSesiones --|> SesionTerapia : Está hecha
 
 @enduml

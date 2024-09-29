@@ -1,8 +1,5 @@
-package Clases;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package Clases;
 
 public class Terapeuta extends Persona {
     private String especialidad;
@@ -12,6 +9,7 @@ public class Terapeuta extends Persona {
         super();
         especialidad = "";
     }
+    
     public Terapeuta(String nombre, String rut, int edad, String especialidad){
         super(nombre, rut, edad);
         this.especialidad = especialidad;
@@ -21,16 +19,17 @@ public class Terapeuta extends Persona {
     public String getEspecialidad() {
         return especialidad;
     }
+    
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
     
     //Metodos de la clase
+    
+    
+    
     @Override
-    public void poblar() throws IOException {
-        super.poblar();
-        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Ingrese la especialidad del terapeuta: ");
-        especialidad = lector.readLine();
+    public String obtenerDatos() {
+        return (getNombre() + ", " + getRut() + ", " + getEdad() + ", " + especialidad + "\n");
     }
 }

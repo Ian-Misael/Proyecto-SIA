@@ -1,0 +1,16 @@
+@startuml
+class com.mycompany.programarehabilitacionfisica.Paciente
+class com.mycompany.programarehabilitacionfisica.ProgramaRehabilitacionFisica
+class com.mycompany.programarehabilitacionfisica.SesionTerapia
+class com.mycompany.programarehabilitacionfisica.Utilidades
+class java.io.BufferedReader
+class java.io.IOException
+class java.io.InputStreamReader
+class java.time.LocalDate
+class java.time.format.DateTimeFormatter
+class java.time.format.DateTimeParseException
+class java.util.ArrayList
+class java.util.HashMap
+class java.util.Scanner
+
+@enduml
