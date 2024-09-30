@@ -25,10 +25,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ListarPacientes = new javax.swing.JButton();
         SeguimientoPaciente = new javax.swing.JButton();
         SalirPrograma = new javax.swing.JButton();
+        EliminarPaciente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(580, 450));
         setMinimumSize(new java.awt.Dimension(580, 450));
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(580, 450));
         jPanel1.setMinimumSize(new java.awt.Dimension(580, 450));
@@ -45,7 +46,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(FondoLayout.createSequentialGroup()
                 .addGap(196, 196, 196)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         FondoLayout.setVerticalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,25 +64,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         SalirPrograma.setText("Salir");
 
+        EliminarPaciente.setText("Eliminar Paciente");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
-                .addComponent(SeguimientoPaciente)
-                .addGap(213, 213, 213))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AgregarPaciente)
-                            .addComponent(ListarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(254, 254, 254)
+                        .addComponent(SalirPrograma))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(242, 242, 242)
-                        .addComponent(SalirPrograma)))
+                        .addGap(206, 206, 206)
+                        .addComponent(SeguimientoPaciente))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ListarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AgregarPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EliminarPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -91,11 +94,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(AgregarPaciente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(EliminarPaciente)
                 .addGap(18, 18, 18)
                 .addComponent(ListarPacientes)
                 .addGap(18, 18, 18)
                 .addComponent(SeguimientoPaciente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
                 .addComponent(SalirPrograma)
                 .addGap(48, 48, 48))
         );
@@ -112,10 +117,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getAgregarPaciente() {
         return AgregarPaciente;
+    }
+    
+    public JButton getEliminarPaciente() {
+        return EliminarPaciente;
     }
     
     public JButton getListarPacientes() {
@@ -132,6 +142,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarPaciente;
+    private javax.swing.JButton EliminarPaciente;
     private javax.swing.JPanel Fondo;
     private javax.swing.JButton ListarPacientes;
     private javax.swing.JButton SalirPrograma;

@@ -12,8 +12,8 @@ public class ListarPacientes extends javax.swing.JFrame {
         String[] arr = datos.split("\n");
         DefaultTableModel model = (DefaultTableModel) TablaPacientes.getModel();
         
-        for (int i = 0 ; i < arr.length ; i++) {
-            String[] cc = arr[i].split(",");
+        for (String arr1 : arr) {
+            String[] cc = arr1.split(",");
             model.addRow(cc);
         }
     }
@@ -34,8 +34,8 @@ public class ListarPacientes extends javax.swing.JFrame {
         CerrarListarPacientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(700, 550));
         setMinimumSize(new java.awt.Dimension(700, 550));
+        setResizable(false);
 
         Fondo.setMaximumSize(new java.awt.Dimension(700, 550));
         Fondo.setMinimumSize(new java.awt.Dimension(700, 550));
@@ -83,7 +83,7 @@ public class ListarPacientes extends javax.swing.JFrame {
             .addGroup(FondoLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CerrarListarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CerrarListarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(Enunciado)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -97,8 +97,8 @@ public class ListarPacientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CerrarListarPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(CerrarListarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,6 +113,7 @@ public class ListarPacientes extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getCerrarListarPacientes() {

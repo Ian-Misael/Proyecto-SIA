@@ -8,22 +8,24 @@ public class ListaSesiones {
     private ArrayList<SesionTerapia> lista;
     
     public ListaSesiones() {
-        lista = new ArrayList();
+        this.lista = new ArrayList();
     }
     
     public boolean agregarSesion(SesionTerapia sesion) {
-        return lista.add(sesion);
+        return this.lista.add(sesion);
     }
     
     public int largo() {
-        return lista.size();
+        return this.lista.size();
     }
+    
+    
     
     public String listarSesiones() {
         String cadena;
         cadena = "";
-        for (int i = 0 ; i < lista.size() ; i++) {
-            cadena += lista.get(i).obtenerDatos();
+        for (int i = 0 ; i < this.lista.size() ; i++) {
+            cadena += this.lista.get(i).obtenerDatos();
         }
         return cadena;
     }

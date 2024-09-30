@@ -9,22 +9,27 @@ public class ListaPacientes {
     private HashMap<String, Paciente> tablaHashPacientes;
     
     public ListaPacientes() {
-        tablaHashPacientes = new HashMap<>();
+        this.tablaHashPacientes = new HashMap<>();
         // Se ingresan Datos
-        Utilidades.leerArchivoPacientes(tablaHashPacientes);
-        Utilidades.leerArchivoSesiones(tablaHashPacientes); 
+        Utilidades.leerArchivoPacientes(this.tablaHashPacientes);
+        Utilidades.leerArchivoSesiones(this.tablaHashPacientes); 
+    }
+    
+    public Paciente getPaciente(String rut) {
+        Paciente pacienteAux = tablaHashPacientes.get(rut);
+        return pacienteAux;
     }
     
     public boolean agregarPaciente(Paciente paciente) {
         String rut = paciente.getRut();
-        Paciente aux = tablaHashPacientes.put(rut, paciente);
+        Paciente aux = this.tablaHashPacientes.put(rut, paciente);
         return aux == null;
     } 
     
     public String listarPacientes() {
         String cadena;
         cadena = "";
-        for (Paciente paciente : tablaHashPacientes.values()) {
+        for (Paciente paciente : this.tablaHashPacientes.values()) {
             cadena += paciente.obtenerDatos();
             //cadena += paciente.listarSesiones();
         }

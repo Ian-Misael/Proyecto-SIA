@@ -15,16 +15,20 @@ public class Controlador implements ActionListener {
     // Ventanas
     private MenuPrincipal menu;
     private AgregarPaciente agregarP;
+    private EliminarPaciente eliminarP;
     private ListarPacientes listarP;
     private SeguimientoPaciente seguirP;
+    private ListarSesiones listarS;
     
     
     public void iniciar() {
         listaPacientes = new ListaPacientes();
-
+        
+        
         menu = new MenuPrincipal();
         menu.getAgregarPaciente().addActionListener(this);
         menu.getListarPacientes().addActionListener(this);
+        menu.getEliminarPaciente().addActionListener(this);
         menu.getSeguimientoPaciente().addActionListener(this);
         menu.getSalirPrograma().addActionListener(this);
         
@@ -53,15 +57,32 @@ public class Controlador implements ActionListener {
             Paciente paciente = new Paciente(nombre, rut, edad, direccion, historial);
             if(listaPacientes.agregarPaciente(paciente)) {
                 Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
-                //javax.swing.JOptionPane.showMessageDialog(this,"Paciente guardado exitosamente\n", "AVISO", javax.swing.JOptionPane.ERROR);
+                javax.swing.JOptionPane.showMessageDialog(null,"Paciente guardado exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
-                // Ya existe el paciente
+                javax.swing.JOptionPane.showMessageDialog(null,"EL paciente ya se encuenta registrado\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
             agregarP.dispose();
             return;
         }
         if (agregarP != null && ae.getSource() == agregarP.getCerrarAgregarPaciente()) {
             agregarP.dispose();
+            return;
+        }
+        // =========== Acciones de Ventana Agregar Paciente ===========
+        if (ae.getSource() == menu.getEliminarPaciente()) {
+            eliminarP = new EliminarPaciente();
+            eliminarP.getBotonEliminarPaciente().addActionListener(this);
+            eliminarP.getCerrarEliminarPaciente().addActionListener(this);
+            eliminarP.setVisible(true);
+            return;
+        }
+        if (eliminarP != null && ae.getSource() == eliminarP.getCerrarEliminarPaciente()) {
+            
+            eliminarP.dispose();
+            return;
+        }
+        if (eliminarP != null && ae.getSource() == eliminarP.getCerrarEliminarPaciente()) {
+            eliminarP.dispose();
             return;
         }
         // =========== Acciones de Ventana Listar Pacientes ===========
@@ -77,10 +98,27 @@ public class Controlador implements ActionListener {
         }
         // =========== Acciones de Ventana Seguimiento Paciente ===========
         if (ae.getSource() == menu.getSeguimientoPaciente()) {
-            seguirP = new SeguimientoPaciente();
+            seguirP = new SeguimientoPaciente(listaPacientes);
             seguirP.getCerrarSeguimientoPaciente().addActionListener(this);
-            
+            seguirP.getBotonSeguirPaciente().addActionListener(this);
             seguirP.setVisible(true);
+            return;
+        }
+        if (seguirP != null && ae.getSource() == seguirP.getBotonSeguirPaciente()) {
+            try {
+                String rut = seguirP.getRutSeguirField().getText();
+                //Utilidades.formatearRut(rut);
+
+                listarS = new ListarSesiones((listaPacientes.getPaciente(rut)).listarSesiones());
+                listarS.getCerrarListarSesiones().addActionListener(this);
+                listarS.setVisible(true);
+                return;
+            } catch (java.lang.NullPointerException nulo) {
+                javax.swing.JOptionPane.showMessageDialog(null,"No existe paciente con el rut especificado\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        if (listarS != null && ae.getSource() == listarS.getCerrarListarSesiones()) {
+            listarS.dispose();
             return;
         }
         if (seguirP != null && ae.getSource() == seguirP.getCerrarSeguimientoPaciente()) {
