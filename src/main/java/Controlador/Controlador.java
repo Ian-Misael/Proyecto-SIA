@@ -27,7 +27,7 @@ public class Controlador implements ActionListener {
     public void iniciar() {
         listaPacientes = new ListaPacientes();
         Utilidades.leerArchivoTerapeutas(tablaHashTerapeutas);
-
+        
         menu = new MenuPrincipal();
         menu.getGestionarPacientes().addActionListener(this);
         menu.getSeguimientoPaciente().addActionListener(this);
