@@ -34,10 +34,10 @@ public class Persona {
         return rut;
     }
 
-    public void setRut(String rut) throws RutInvalidoException {
-        if (rut.matches(".*[a-jl-zA-JL-Z].*")) {
-            throw new RutInvalidoException();
-        }
+    public void setRut(String rut) { //throws RutInvalidoException 
+        //if (rut.matches(".*[a-jl-zA-JL-Z].*")) {
+            //throw new RutInvalidoException();
+        //}
         this.rut = rut;
     }
 
@@ -46,7 +46,7 @@ public class Persona {
     }
 
     public void setEdad(int edad) throws EdadInvalidaException {
-        if (edad < 0) {
+        if (edad < 0 || edad > 120) {
             throw new EdadInvalidaException();
         }
         this.edad = edad;

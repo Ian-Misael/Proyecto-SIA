@@ -61,14 +61,15 @@
                           <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
                           <Component id="SeguimientoPaciente" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="ListarPacientes" min="-2" pref="137" max="-2" attributes="0"/>
-                              <Component id="AgregarPaciente" alignment="1" max="32767" attributes="0"/>
-                              <Component id="EliminarPaciente" alignment="1" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                  </Group>
+                  <EmptySpace pref="209" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="ListarPacientes" min="-2" pref="137" max="-2" attributes="0"/>
+                      <Component id="AgregarPaciente" alignment="1" max="32767" attributes="0"/>
+                      <Component id="EliminarPaciente" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>

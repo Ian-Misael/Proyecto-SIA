@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 import Clases.*;
 import Colecciones.*;
+import Errores.*;
 import Ventanas.*;
 
 // javax.swing.JOptionPane.ShowMessageDialog(this, "Debe llenar los campos\n", "AVISO", javax.swing.JOptionPane.ERROR);
@@ -48,20 +49,40 @@ public class Controlador implements ActionListener {
             return;
         }
         if (agregarP != null && ae.getSource() == agregarP.getBotonAgregarPaciente()) {
-            String nombre =  agregarP.getNombreField().getText();
-            String rut = agregarP.getRutField().getText();
-            rut = Utilidades.formatearRut(rut);
-            int edad = Integer.parseInt(agregarP.getEdadField().getText());
-            String direccion = agregarP.getDireccionField().getText();
-            String historial = agregarP.getHistorialField().getText();
-            
-            Paciente paciente = new Paciente(nombre, rut, edad, direccion, historial);
-            if(listaPacientes.agregarPaciente(paciente)) {
-                Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
-                javax.swing.JOptionPane.showMessageDialog(null,"Paciente guardado exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null,"EL paciente ya se encuenta registrado\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            try {
+                String nombre =  agregarP.getNombreField().getText();
+                String rut = Utilidades.formatearRut(agregarP.getRutField().getText());
+                int edad = Integer.parseInt(agregarP.getEdadField().getText());
+                String direccion = agregarP.getDireccionField().getText();
+                String historial = agregarP.getHistorialField().getText();
+                
+                Paciente paciente = new Paciente();
+                paciente.setNombre(nombre);
+                paciente.setRut(rut);
+                paciente.setEdad(edad);
+                paciente.setDireccion(direccion);
+                paciente.setHistorialMedico(historial);
+                
+                if(nombre.equals("") || rut.equals("") || direccion.equals("") || historial.equals("")) {
+                    javax.swing.JOptionPane.showMessageDialog(null,"Rellene todos los campos\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    agregarP.dispose();
+                    return;
+                }
+                
+                if(listaPacientes.agregarPaciente(paciente)) {
+                    Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
+                    javax.swing.JOptionPane.showMessageDialog(null,"Paciente guardado exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null,"EL paciente ya se encuenta registrado\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Ingrese una edad válida\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (EdadInvalidaException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Edad fuera de rango\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
+            
+            
+            
             agregarP.dispose();
             return;
         }
