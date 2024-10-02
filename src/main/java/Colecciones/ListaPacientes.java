@@ -22,8 +22,11 @@ public class ListaPacientes {
     
     public boolean agregarPaciente(Paciente paciente) {
         String rut = paciente.getRut();
-        Paciente aux = this.tablaHashPacientes.put(rut, paciente);
-        return aux == null;
+        if(this.tablaHashPacientes.containsKey(rut)){
+            return false;
+        }
+        this.tablaHashPacientes.put(rut, paciente);
+        return true;
     } 
     
     public String listarPacientes() {

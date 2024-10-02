@@ -50,6 +50,7 @@ public class Controlador implements ActionListener {
         if (agregarP != null && ae.getSource() == agregarP.getBotonAgregarPaciente()) {
             String nombre =  agregarP.getNombreField().getText();
             String rut = agregarP.getRutField().getText();
+            rut = Utilidades.formatearRut(rut);
             int edad = Integer.parseInt(agregarP.getEdadField().getText());
             String direccion = agregarP.getDireccionField().getText();
             String historial = agregarP.getHistorialField().getText();
@@ -68,7 +69,7 @@ public class Controlador implements ActionListener {
             agregarP.dispose();
             return;
         }
-        // =========== Acciones de Ventana Agregar Paciente ===========
+        // =========== Acciones de Ventana Eliminar Paciente ===========
         if (ae.getSource() == menu.getEliminarPaciente()) {
             eliminarP = new EliminarPaciente();
             eliminarP.getBotonEliminarPaciente().addActionListener(this);
@@ -107,7 +108,7 @@ public class Controlador implements ActionListener {
         if (seguirP != null && ae.getSource() == seguirP.getBotonSeguirPaciente()) {
             try {
                 String rut = seguirP.getRutSeguirField().getText();
-                //Utilidades.formatearRut(rut);
+                rut = Utilidades.formatearRut(rut);
 
                 listarS = new ListarSesiones((listaPacientes.getPaciente(rut)).listarSesiones());
                 listarS.getCerrarListarSesiones().addActionListener(this);
