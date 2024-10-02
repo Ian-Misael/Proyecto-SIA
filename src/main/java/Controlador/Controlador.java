@@ -8,8 +8,6 @@ import Colecciones.*;
 import Errores.*;
 import Ventanas.*;
 
-// javax.swing.JOptionPane.ShowMessageDialog(this, "Debe llenar los campos\n", "AVISO", javax.swing.JOptionPane.ERROR);
-
 public class Controlador implements ActionListener {
     
     private ListaPacientes listaPacientes;
@@ -89,14 +87,20 @@ public class Controlador implements ActionListener {
         }
         // =========== Acciones de Ventana Eliminar Paciente ===========
         if (ae.getSource() == menu.getEliminarPaciente()) {
-            eliminarP = new EliminarPaciente();
+            eliminarP = new EliminarPaciente(listaPacientes.listarPacientes());
             eliminarP.getBotonEliminarPaciente().addActionListener(this);
             eliminarP.getCerrarEliminarPaciente().addActionListener(this);
             eliminarP.setVisible(true);
             return;
         }
-        if (eliminarP != null && ae.getSource() == eliminarP.getCerrarEliminarPaciente()) {
-            
+        if (eliminarP != null && ae.getSource() == eliminarP.getBotonEliminarPaciente()) {
+            String rut = Utilidades.formatearRut(eliminarP.getRutEliminarField().getText());
+            if (listaPacientes.eliminarPaciente(rut)) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Paciente eliminado exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+            else {
+                javax.swing.JOptionPane.showMessageDialog(null,"No existe paciente con el rut entregado\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
             eliminarP.dispose();
             return;
         }
