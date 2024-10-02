@@ -137,6 +137,35 @@ public class Utilidades {
             System.out.println("No se pudo leer correctamente, excepcion");
         }        
     }
+    public static void leerArchivoTerapeutas(Map<String, Terapeuta> tablaHashTerapeutas)
+    {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoTerapeutas.csv")))
+        {
+            String linea;
+            linea = reader.readLine(); // Para leer lo primero (rut, nombre...)
+             
+            while ((linea = reader.readLine())!= null)
+            {
+                String rut;
+                String nombre;
+                String edadSTR;
+                String especialidad;
+                 
+                String[] campos = linea.split(",");
+                nombre = campos[0];
+                rut = formatearRut(campos[1]);
+                edadSTR =  campos[2];
+                especialidad = campos[3];
+                 
+                int edad = Integer.parseInt(edadSTR); // Se confia que el numero guardado en el excel es un numero.
+                 
+                Terapeuta terapeuta = new Terapeuta(nombre, rut, edad, especialidad);
+                tablaHashTerapeutas.put(terapeuta.getRut(),terapeuta);
+            } 
+        } catch(IOException e){
+            System.out.println("No se pudo leer correctamente, excepcion");
+        }
+    } 
     
     public static void guardarSesionesCSV(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rut)
     {

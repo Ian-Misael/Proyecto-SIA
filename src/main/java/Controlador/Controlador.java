@@ -7,6 +7,7 @@ import Clases.*;
 import Colecciones.*;
 import Errores.*;
 import Ventanas.*;
+import java.util.HashMap;
 
 public class Controlador implements ActionListener {
     
@@ -20,10 +21,12 @@ public class Controlador implements ActionListener {
     private SeguimientoPaciente seguirP;
     private ListarSesiones listarS;
     private GestionarSesion gestionS;
+    private HashMap<String, Terapeuta> tablaHashTerapeutas = new HashMap<>();
     
     
     public void iniciar() {
         listaPacientes = new ListaPacientes();
+        Utilidades.leerArchivoTerapeutas(tablaHashTerapeutas);
         
         menu = new MenuPrincipal();
         menu.getGestionarPacientes().addActionListener(this);

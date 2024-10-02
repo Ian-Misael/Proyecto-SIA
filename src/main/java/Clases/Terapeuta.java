@@ -25,9 +25,6 @@ public class Terapeuta extends Persona {
     }
     
     //Metodos de la clase
-    
-    
-    
     @Override
     public String obtenerDatos() {
         return (getNombre() + ", " + getRut() + ", " + getEdad() + ", " + especialidad + "\n");

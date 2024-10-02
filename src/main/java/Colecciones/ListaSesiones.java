@@ -29,4 +29,13 @@ public class ListaSesiones {
         }
         return cadena;
     }
+    public ArrayList<SesionTerapia> filtrarSesionesPorAnio(int anio) {
+        ArrayList<SesionTerapia> sesionesFiltradas = new ArrayList<>();
+        for (SesionTerapia sesion : lista) {
+            if (sesion.getFecha().getYear() == anio) {
+                sesionesFiltradas.add(sesion);
+            }
+        }
+        return sesionesFiltradas;
+    }
 }
