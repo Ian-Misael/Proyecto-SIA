@@ -9,7 +9,7 @@ public class Centro {
     private ArrayList<Terapeuta> terapeutas;
     
     public Centro() {
-        direccion = "Quielpue";
+        direccion = "Quilpue";
         pacientes = new ArrayList();
         terapeutas = new ArrayList();
     }
