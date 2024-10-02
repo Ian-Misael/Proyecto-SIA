@@ -13,21 +13,22 @@ public class Controlador implements ActionListener {
     private ListaPacientes listaPacientes;
     // Ventanas
     private MenuPrincipal menu;
+    private GestionarPaciente gestionP;
     private AgregarPaciente agregarP;
     private EliminarPaciente eliminarP;
     private ListarPacientes listarP;
     private SeguimientoPaciente seguirP;
     private ListarSesiones listarS;
+    private GestionarSesion gestionS;
     
     
     public void iniciar() {
         listaPacientes = new ListaPacientes();
         
         menu = new MenuPrincipal();
-        menu.getAgregarPaciente().addActionListener(this);
-        menu.getListarPacientes().addActionListener(this);
-        menu.getEliminarPaciente().addActionListener(this);
+        menu.getGestionarPacientes().addActionListener(this);
         menu.getSeguimientoPaciente().addActionListener(this);
+        menu.getGestionarSesiones().addActionListener(this);
         menu.getSalirPrograma().addActionListener(this);
         
         menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -36,8 +37,24 @@ public class Controlador implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent ae) {
+        
+        // =========== Acciones de Ventana Gestionar Paciente ===========
+        if (ae.getSource() == menu.getGestionarPacientes()) {
+            gestionP = new GestionarPaciente(listaPacientes);
+            gestionP.getAgregarPaciente().addActionListener(this);
+            gestionP.getEliminarPaciente().addActionListener(this);
+            gestionP.getListarPacientes().addActionListener(this);
+            gestionP.getCerrarGestionarPacientes().addActionListener(this);
+            gestionP.setVisible(true);
+            return;
+        }
+        if (gestionP != null && ae.getSource() == gestionP.getCerrarGestionarPacientes()) {
+            gestionP.dispose();
+            return;
+        }
+        
         // =========== Acciones de Ventana Agregar Paciente ===========
-        if (ae.getSource() == menu.getAgregarPaciente()) {
+        if (gestionP != null && ae.getSource() == gestionP.getAgregarPaciente()) {
             agregarP = new AgregarPaciente();
             agregarP.getBotonAgregarPaciente().addActionListener(this);
             agregarP.getCerrarAgregarPaciente().addActionListener(this);
@@ -85,8 +102,9 @@ public class Controlador implements ActionListener {
             agregarP.dispose();
             return;
         }
+        
         // =========== Acciones de Ventana Eliminar Paciente ===========
-        if (ae.getSource() == menu.getEliminarPaciente()) {
+        if (gestionP != null && ae.getSource() == gestionP.getEliminarPaciente()) {
             eliminarP = new EliminarPaciente(listaPacientes.listarPacientes());
             eliminarP.getBotonEliminarPaciente().addActionListener(this);
             eliminarP.getCerrarEliminarPaciente().addActionListener(this);
@@ -108,8 +126,9 @@ public class Controlador implements ActionListener {
             eliminarP.dispose();
             return;
         }
+        
         // =========== Acciones de Ventana Listar Pacientes ===========
-        if (ae.getSource() == menu.getListarPacientes()) {
+        if (gestionP != null && ae.getSource() == gestionP.getListarPacientes()) {
             listarP = new ListarPacientes(listaPacientes.listarPacientes());
             listarP.getCerrarListarPacientes().addActionListener(this);
             listarP.setVisible(true);
@@ -119,6 +138,7 @@ public class Controlador implements ActionListener {
             listarP.dispose();
             return;
         }
+        
         // =========== Acciones de Ventana Seguimiento Paciente ===========
         if (ae.getSource() == menu.getSeguimientoPaciente()) {
             seguirP = new SeguimientoPaciente(listaPacientes);
@@ -148,6 +168,40 @@ public class Controlador implements ActionListener {
             seguirP.dispose();
             return;
         }
+        
+        // =========== Acciones de Ventana Gestionar Sesión ===========
+        if (ae.getSource() == menu.getGestionarSesiones()) {
+            gestionS = new GestionarSesion(listaPacientes);
+            gestionS.getAgregarSesion().addActionListener(this);
+            gestionS.getEliminarSesion().addActionListener(this);
+            gestionS.getFiltrarSesiones().addActionListener(this);
+            gestionS.getCerrarGestionarSesion().addActionListener(this);
+            gestionS.setVisible(true);
+            return;
+        }
+        
+        // =========== Acciones de Ventana Agregar Sesión ===========
+        if (gestionS != null && ae.getSource() == gestionS.getAgregarSesion()) {
+            
+            return;
+        }
+        
+        // =========== Acciones de Ventana Eliminar Sesión ===========
+        if (gestionS != null && ae.getSource() == gestionS.getEliminarSesion()) {
+            
+            return;
+        }
+        
+        // =========== Acciones de Ventana Filtrar Sesiones ===========
+        if (gestionS != null && ae.getSource() == gestionS.getFiltrarSesiones()) {
+            
+            return;
+        }
+        if (gestionS != null && ae.getSource() == gestionS.getCerrarGestionarSesion()) {
+            gestionS.dispose();
+            return;
+        }
+        
         // =========== Cerrar Programa ===========
         if (ae.getSource() == menu.getSalirPrograma()) {
             menu.dispose();
