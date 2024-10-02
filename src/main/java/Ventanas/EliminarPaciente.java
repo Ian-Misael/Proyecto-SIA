@@ -65,7 +65,6 @@ public class EliminarPaciente extends javax.swing.JFrame {
         jLabel1.setText("Pacientes Registrados");
 
         jLabel2.setText("Ingrese el rut del paciente a eliminar:");
-        jLabel2.setText("Ingrese el nombre del paciente a eliminar:");
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
         Fondo.setLayout(FondoLayout);
