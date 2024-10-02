@@ -25,7 +25,6 @@ public class Controlador implements ActionListener {
     public void iniciar() {
         listaPacientes = new ListaPacientes();
         
-        
         menu = new MenuPrincipal();
         menu.getAgregarPaciente().addActionListener(this);
         menu.getListarPacientes().addActionListener(this);
@@ -35,7 +34,6 @@ public class Controlador implements ActionListener {
         
         menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         menu.setVisible(true);
-        
     }
     
     @Override
@@ -64,7 +62,7 @@ public class Controlador implements ActionListener {
                 paciente.setHistorialMedico(historial);
                 
                 if(nombre.equals("") || rut.equals("") || direccion.equals("") || historial.equals("")) {
-                    javax.swing.JOptionPane.showMessageDialog(null,"Rellene todos los campos\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(null,"Rellene todos los campos\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
                     agregarP.dispose();
                     return;
                 }
@@ -73,16 +71,15 @@ public class Controlador implements ActionListener {
                     Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
                     javax.swing.JOptionPane.showMessageDialog(null,"Paciente guardado exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(null,"EL paciente ya se encuenta registrado\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(null,"EL paciente ya se encuenta registrado\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
                 }
             } catch (NumberFormatException e) {
                 javax.swing.JOptionPane.showMessageDialog(null,"Ingrese una edad válida\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
             } catch (EdadInvalidaException e) {
                 javax.swing.JOptionPane.showMessageDialog(null,"Edad fuera de rango\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (RutInvalidoException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Rut invalido\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-            
-            
-            
             agregarP.dispose();
             return;
         }

@@ -34,10 +34,11 @@ public class Persona {
         return rut;
     }
 
-    public void setRut(String rut) { //throws RutInvalidoException 
-        //if (rut.matches(".*[a-jl-zA-JL-Z].*")) {
-            //throw new RutInvalidoException();
-        //}
+    public void setRut(String rut) throws RutInvalidoException {
+    // Verifica que no haya letras entre a-j o A-J en todo el string, excepto 'k' o 'K' solo al final
+        if (!rut.matches("\\d{1,2}(\\.\\d{3}){2}-[0-9kK]")) {
+            throw new RutInvalidoException();
+        }
         this.rut = rut;
     }
 
