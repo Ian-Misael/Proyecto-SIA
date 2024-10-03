@@ -51,6 +51,10 @@ public class Paciente extends Persona{
         return sesiones.listarSesiones();
     }
     
+    public ListaSesiones ObtenerListaSesiones() {
+        return this.sesiones;
+    }
+    
     @Override
     public String obtenerDatos() {
         return (getNombre() + ", " + getRut() + ", " + getEdad() + ", " + direccion + ", " + historialMedico + "\n");
