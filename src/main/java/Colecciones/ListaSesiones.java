@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 public class ListaSesiones {
     private ArrayList<SesionTerapia> lista;
+    private int indiceActual;
     
     public ListaSesiones() {
         this.lista = new ArrayList();
+        this.indiceActual = -1;
     }
     
     public boolean agregarSesion(SesionTerapia sesion) {
@@ -38,4 +40,24 @@ public class ListaSesiones {
         }
         return sesionesFiltradas;
     }
+    
+    public SesionTerapia obtenerSesionActual() {
+        if (indiceActual >= 0 && indiceActual < lista.size()) {
+            return lista.get(indiceActual);
+        } else {
+            return null; // No hay sesión actual válida
+        }
+    }
+    public SesionTerapia siguiente() {
+        if (indiceActual < lista.size() - 1) {
+            indiceActual++;
+            return lista.get(indiceActual);
+        } else {
+            return null; // Ya estamos en la última sesión
+        }
+    }
+
+    public void reiniciarRecorrido() {
+        this.indiceActual = -1; // Resetea el índice
+    }        
 }
