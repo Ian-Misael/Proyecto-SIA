@@ -1,15 +1,20 @@
 Rut ; Fecha ; Tipo de terapia ; Duracion ; Observaciones ; calificacion de mejora
-12.345.678-9;15/09/2024;Terapia de movilidad articular;45 min;Mejoria significativa en el rango de movimiento;8
 9.876.543-2;16/09/2024;Terapia de fortalecimiento lumbar;60 min;Pacienta refiere menos dolor lumbar;7
-11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9
-5.566.778-8;18/09/2024;Terapia de equilibrio y propiocepcion;40 min;Evolucion lenta pero constante;6
+12.345.678-9;15/09/2024;Terapia de movilidad articular;45 min;Mejoria significativa en el rango de movimiento;8
+11.221.122-3;23/09/2024;Rehabilitacion de ligamentos cruzados;45 min;Paciente ha mejorado notablemente la movilidad;9
+7.890.123-4;26/09/2024;Rehabilitacion de clavicula;30 min;Movilidad recuperada casi por completo;9
 9.988.776-6;19/09/2024;Rehabilitacion de columna;55 min;Sin dolor significativo, progreso favorable;8
 3.344.556-6;20/09/2024;Terapia de estiramientos de hombro;35 min;Mejor movilidad, pero persiste el dolor leve;7
-12.344.321-8;21/09/2024;Terapia fisica post-ACV;60 min;Progresos en la movilidad de extremidades superiores;8
 6.677.889-9;22/09/2024;Terapia post-cirugia de hernia discal;50 min;Avances positivos, pero requiere mas sesiones;7
-11.221.122-3;23/09/2024;Rehabilitacion de ligamentos cruzados;45 min;Paciente ha mejorado notablemente la movilidad;9
-9.988.001-2;24/09/2024;Terapia de rodilla;50 min;Disminucion del dolor y mejora de la movilidad;8
-5.432.167-8;25/09/2024;Terapia de fortalecimiento muscular;45 min;Mejora gradual en el musculo afectado;7
-7.890.123-4;26/09/2024;Rehabilitacion de clavicula;30 min;Movilidad recuperada casi por completo;9
-5.566.778-8;26/09/2024;Terapia de equilibrio y propiocepcion;40 min;si;10
 20.180.417-5;26/09/2024;terapia de movilidad;45 minutos;Fallecio;10
+12.344.321-8;21/09/2024;Terapia fisica post-ACV;60 min;Progresos en la movilidad de extremidades superiores;8
+5.566.778-8;18/09/2024;Terapia de equilibrio y propiocepcion;40 min;Evolucion lenta pero constante;6
+5.566.778-8;26/09/2024;Terapia de equilibrio y propiocepcion;40 min;si;10
+5.432.167-8;25/09/2024;Terapia de fortalecimiento muscular;45 min;Mejora gradual en el musculo afectado;7
+11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9
+11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9
+11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9
+11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9
+11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9
+11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9
+9.988.001-2;24/09/2024;Terapia de rodilla;50 min;Disminucion del dolor y mejora de la movilidad;8
