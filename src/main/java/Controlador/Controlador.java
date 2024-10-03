@@ -86,7 +86,7 @@ public class Controlador implements ActionListener {
                 }
                 
                 if(listaPacientes.agregarPaciente(paciente)) {
-                    Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
+                    //Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
                     javax.swing.JOptionPane.showMessageDialog(null,"Paciente guardado exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(null,"EL paciente ya se encuenta registrado\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
@@ -207,6 +207,8 @@ public class Controlador implements ActionListener {
         
         // =========== Cerrar Programa ===========
         if (ae.getSource() == menu.getSalirPrograma()) {
+            listaPacientes.guardarPacientesCSV();
+            listaPacientes.guardarSesionesCSV();
             menu.dispose();
             return;
         }
