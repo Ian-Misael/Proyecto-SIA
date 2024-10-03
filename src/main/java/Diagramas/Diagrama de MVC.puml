@@ -1,0 +1,67 @@
+@startuml Programa
+
+title Diagrama MVC
+header Proyecto
+footer Diagrama 3
+
+
+class Controlador {
+    - Centro centro;
+
+    - MenuPrincipal menu;
+    - GestionarPaciente gestionP;
+    - AgregarPaciente agregarP;
+    - EliminarPaciente eliminarP;
+    - ListarPacientes listarP;
+    - SeguimientoPaciente seguirP;
+    - ListarSesiones listarS;
+    - GestionarSesion gestionS;
+}
+
+interface MenuPrincipal {
+    + JButton getGestionarPacientes()
+    + JButton getSeguimientoPaciente()
+    + JButton getGestionarSesiones()
+    + JButton getSalirPrograma()
+}
+
+interface GestionarPaciente {
+    + JButton getAgregarPaciente()
+    + JButton getEliminarPaciente()
+    + JButton getListarPacientes()
+    + JButton getCerrarGestionarPacientes()
+}
+
+interface AgregarPaciente {
+    + JTextField getNombreField()
+    + JTextField getRutField()
+    + JTextField getEdadField()
+    + JTextField getDireccionField()
+    + JTextField getHistorialField()
+    + JButton getBotonAgregarPaciente()
+    + JButton getCerrarAgregarPaciente()
+}
+
+interface EliminarPaciente {
+    + JTextField getRutEliminarField()
+    + JButton getBotonEliminarPaciente()
+    + JButton getCerrarEliminarPaciente()
+}
+
+interface ListarPacientes {
+    + JButton getCerrarListarPacientes()
+}
+
+interface SeguimientoPaciente {
+
+}
+
+
+MenuPrincipal --|> Controlador : Es llamado por
+GestionarPaciente --|> MenuPrincipal : Contiene
+AgregarPaciente --|> GestionarPaciente : Es Manejado
+EliminarPaciente --|> GestionarPaciente : Es Manejado
+ListarPacientes --|> GestionarPaciente : Es Manejado
+
+
+@enduml
