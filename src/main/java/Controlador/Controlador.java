@@ -7,6 +7,7 @@ import Clases.*;
 import Colecciones.*;
 import Errores.*;
 import Ventanas.*;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
 public class Controlador implements ActionListener {
@@ -21,6 +22,7 @@ public class Controlador implements ActionListener {
     private SeguimientoPaciente seguirP;
     private ListarSesiones listarS;
     private GestionarSesion gestionS;
+    private AgregarSesion agregarS;    
     private HashMap<String, Terapeuta> tablaHashTerapeutas = new HashMap<>();
     
     
@@ -72,18 +74,18 @@ public class Controlador implements ActionListener {
                 String direccion = agregarP.getDireccionField().getText();
                 String historial = agregarP.getHistorialField().getText();
                 
+                if(nombre.equals("") || rut.equals("") || direccion.equals("") || historial.equals("")) {
+                    javax.swing.JOptionPane.showMessageDialog(null,"Rellene todos los campos\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    agregarP.dispose();
+                    return;
+                }
+                
                 Paciente paciente = new Paciente();
                 paciente.setNombre(nombre);
                 paciente.setRut(rut);
                 paciente.setEdad(edad);
                 paciente.setDireccion(direccion);
                 paciente.setHistorialMedico(historial);
-                
-                if(nombre.equals("") || rut.equals("") || direccion.equals("") || historial.equals("")) {
-                    javax.swing.JOptionPane.showMessageDialog(null,"Rellene todos los campos\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
-                    agregarP.dispose();
-                    return;
-                }
                 
                 if(listaPacientes.agregarPaciente(paciente)) {
                     //Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
@@ -185,9 +187,60 @@ public class Controlador implements ActionListener {
         
         // =========== Acciones de Ventana Agregar Sesión ===========
         if (gestionS != null && ae.getSource() == gestionS.getAgregarSesion()) {
-            
+            agregarS = new AgregarSesion();
+            agregarS.getBotonAgregarSesion().addActionListener(this);
+            agregarS.getCerrarAgregarSesion().addActionListener(this);
+            agregarS.setVisible(true);
             return;
         }
+        
+        if (agregarS != null && ae.getSource() == agregarS.getBotonAgregarSesion()){
+            try {
+                String rutTerapeuta =  Utilidades.formatearRut(agregarS.getRutTerapeutaField().getText());
+                String rutPaciente = Utilidades.formatearRut(agregarS.getRutPacienteField().getText());
+                String fecha = agregarS.getFechaField().getText();
+                String terapia = agregarS.getTerapiaField().getText();
+                int nota = Integer.parseInt(agregarS.getNotaField().getText());
+                String comentarios = agregarS.getComentariosField().getText();
+                String duracion = agregarS.getDuracionField().getText();
+                
+                if(rutTerapeuta.equals("") || rutPaciente.equals("") || fecha.equals("") || terapia.equals("") || comentarios.equals("") || duracion.equals("")) {
+                    javax.swing.JOptionPane.showMessageDialog(null,"Rellene todos los campos\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    agregarP.dispose();
+                    return;
+                }
+                
+                SesionTerapia sesion = new SesionTerapia();
+                sesion.setRutTerapeuta(rutTerapeuta);
+                sesion.setFecha(fecha);
+                sesion.setTipoTerapia(terapia);
+                sesion.setCalificacionMejora(nota);
+                sesion.setObservaciones(comentarios);
+                
+                
+                if(listaPacientes.contienePaciente(rutPaciente)) {
+                    //Utilidades.guardarPacienteCSV(nombre, rut, edad, direccion, historial);
+                    listaPacientes.getPaciente(rutPaciente).agregarSesion(sesion);
+                    javax.swing.JOptionPane.showMessageDialog(null,"Sesión guardada exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null,"No existe paciente con el rut especificado\\n\"", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Ingrese una nota válida\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (DateTimeParseException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Fecha inválida. Ingresar en formato dd/mm/yyyy\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (RutInvalidoException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Rut invalido\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+            agregarS.dispose();
+            return;
+        }
+        
+        if (agregarS != null && ae.getSource() == agregarS.getCerrarAgregarSesion()){
+            agregarS.dispose();
+            return;
+        }
+        
         
         // =========== Acciones de Ventana Eliminar Sesión ===========
         if (gestionS != null && ae.getSource() == gestionS.getEliminarSesion()) {
