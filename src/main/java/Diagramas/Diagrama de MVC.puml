@@ -112,19 +112,19 @@ interface FiltrarSesiones {
 
 }
 
-Centro --|> Controlador : Es llamado por
-ListaPacientes --|> Centro : Contiene
-ListaTerapeutas --|> Centro : Contiene
+Centro -up-|> Controlador : Es llamado por
+ListaPacientes -up-|> Centro : Contiene
+ListaTerapeutas -up-|> Centro : Contiene
 
-MenuPrincipal --|> Controlador : Es llamado por
-GestionarPaciente --|> MenuPrincipal : Contiene
-AgregarPaciente --|> GestionarPaciente : Es Manejado
-EliminarPaciente --|> GestionarPaciente : Es Manejado
-ListarPacientes --|> GestionarPaciente : Es Manejado
-SeguimientoPaciente --|> MenuPrincipal : Contiene
-GestionarSesion --|> MenuPrincipal : Contiene
-AgregarSesion --|> GestionarSesion : Es Manejado
-EliminarSesion --|> GestionarSesion : Es Manejado
-FiltrarSesiones --|> GestionarSesion : Es Manejado
+MenuPrincipal -down-|> Controlador : Es llamado por
+GestionarPaciente -down-|> MenuPrincipal : Contiene
+AgregarPaciente -down-|> GestionarPaciente : Es Manejado
+EliminarPaciente -down-|> GestionarPaciente : Es Manejado
+ListarPacientes -down-|> GestionarPaciente : Es Manejado
+SeguimientoPaciente -down-|> MenuPrincipal : Contiene
+GestionarSesion -down-|> MenuPrincipal : Contiene
+AgregarSesion -down-|> GestionarSesion : Es Manejado
+EliminarSesion -down-|> GestionarSesion : Es Manejado
+FiltrarSesiones -down-|> GestionarSesion : Es Manejado
 
 @enduml

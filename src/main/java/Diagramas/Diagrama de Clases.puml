@@ -10,8 +10,6 @@ class Centro {
     - ListaTerapeutas terapeutas
 
     + Centro(String nombre)
-    
-    
 }
 
 class Persona {
