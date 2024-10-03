@@ -52,6 +52,7 @@ public class Utilidades {
         System.out.println("Presione enter para continuar..");
         enter = scanner.nextLine();
     }
+   
     
     public static void leerArchivoPacientes(Map<String, Paciente> tablaHashPacientes)
     {
@@ -84,6 +85,7 @@ public class Utilidades {
             System.out.println("No se pudo leer correctamente, excepcion");
         }
     } 
+    /*
     public static void guardarPacienteCSV(String nombre, String rut, int edad, String direccion, String historialMedico)
     {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoPacientes.csv", true))) {
@@ -96,6 +98,7 @@ public class Utilidades {
             System.out.println("algo paso, excepcion");
         }
     }
+    */
     
     public static void leerArchivoSesiones(Map<String, Paciente> tablaHashPacientes)
     {
@@ -167,6 +170,7 @@ public class Utilidades {
         }
     } 
     
+    /*
     public static void guardarSesionesCSV(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rut)
     {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -182,5 +186,6 @@ public class Utilidades {
         }
 
     }
+    */
 }
 
