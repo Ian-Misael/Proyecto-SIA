@@ -18,6 +18,33 @@ class Controlador {
     - GestionarSesion gestionS;
 }
 
+class Centro {
+    - String nombre
+    - ListaPacientes pacientes
+    - ListaTerapeutas terapeutas
+
+    + Centro(String nombre)
+    
+}
+
+class ListaPacientes {
+    - HashMap<String, Paciente> tablaHashPacientes
+
+    + ListaPacientes()
+
+    + boolean agregarPaciente(Paciente paciente)
+    + String listarPacientes()
+}
+
+class ListaTerapeutas {
+    - HashMap<String, Terapeuta> tablaHashterapeutas
+
+    + ListaTerapeutas()
+
+    + boolean agregarTerapeuta(Terapeuta terapeuta)
+    + String listarTerapeutas()
+}
+
 interface MenuPrincipal {
     + JButton getGestionarPacientes()
     + JButton getSeguimientoPaciente()
@@ -53,15 +80,51 @@ interface ListarPacientes {
 }
 
 interface SeguimientoPaciente {
+    + JTextField getRutSeguirField()
+    + JButton getBotonSeguirPaciente()
+    + JButton getCerrarSeguimientoPaciente()
+}
+
+interface GestionarSesion {
+    + JButton getAgregarSesion()
+    + JButton getEliminarSesion()
+    + JButton getFiltrarSesiones()
+    + JButton getCerrarGestionarSesion()
+}
+
+interface AgregarSesion {
+    + JTextField getRutTerapeutaField()
+    + JTextField getRutPacienteField()
+    + JTextField getFechaField()
+    + JTextField getTerapiaField()
+    + JTextField getNotaField()
+    + JTextField getComentariosField()
+    + JTextField getDuracionField()
+    + JButton getBotonAgregarSesion()
+    + JButton getCerrarAgregarSesion()
+}
+
+interface EliminarSesion {
 
 }
 
+interface FiltrarSesiones {
 
-MenuPrincipal --|> Controlador : Es llamado por
-GestionarPaciente --|> MenuPrincipal : Contiene
-AgregarPaciente --|> GestionarPaciente : Es Manejado
-EliminarPaciente --|> GestionarPaciente : Es Manejado
-ListarPacientes --|> GestionarPaciente : Es Manejado
+}
 
+Centro -up-|> Controlador : Es llamado por
+ListaPacientes -up-|> Centro : Contiene
+ListaTerapeutas -up-|> Centro : Contiene
+
+MenuPrincipal -down-|> Controlador : Es llamado por
+GestionarPaciente -down-|> MenuPrincipal : Contiene
+AgregarPaciente -down-|> GestionarPaciente : Es Manejado
+EliminarPaciente -down-|> GestionarPaciente : Es Manejado
+ListarPacientes -down-|> GestionarPaciente : Es Manejado
+SeguimientoPaciente -down-|> MenuPrincipal : Contiene
+GestionarSesion -down-|> MenuPrincipal : Contiene
+AgregarSesion -down-|> GestionarSesion : Es Manejado
+EliminarSesion -down-|> GestionarSesion : Es Manejado
+FiltrarSesiones -down-|> GestionarSesion : Es Manejado
 
 @enduml

@@ -7,6 +7,7 @@ import Clases.*;
 import Colecciones.*;
 import Errores.*;
 import Ventanas.*;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
@@ -27,6 +28,7 @@ public class Controlador implements ActionListener {
     
     
     public void iniciar() {
+        FlatMacLightLaf.setup();
         listaPacientes = new ListaPacientes();
         Utilidades.leerArchivoTerapeutas(tablaHashTerapeutas);
         

@@ -49,15 +49,7 @@ public class ListarPacientes extends javax.swing.JFrame {
             new String [] {
                 "Nombre", "Rut", "Edad", "Dirección", "Historial"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(TablaPacientes);
         if (TablaPacientes.getColumnModel().getColumnCount() > 0) {
             TablaPacientes.getColumnModel().getColumn(0).setMinWidth(120);
