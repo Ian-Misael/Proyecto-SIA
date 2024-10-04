@@ -81,7 +81,7 @@ public class ListaPacientes {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoSesiones.csv", false))) {
 
-            writer.write("Rut ; Fecha ; Tipo de terapia ; Duracion ; Observaciones ; calificacion de mejora");
+            writer.write("Rut ; Fecha ; Tipo de terapia ; Duracion ; Observaciones ; calificacion de mejora; RUT TERAPEUTA");
             writer.newLine();
             for (Paciente paciente : this.tablaHashPacientes.values()) {
                 ListaSesiones sesiones = paciente.ObtenerListaSesiones();
@@ -96,7 +96,8 @@ public class ListaPacientes {
                     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     String fechaSTR = sesion.getFecha().format(formato);
                     writer.write(paciente.getRut() + ";" + fechaSTR + ";" + sesion.getTipoTerapia() 
-                             + ";" + sesion.getDuracion() + ";" + sesion.getObservaciones() + ";" + sesion.getCalificacionMejora());
+                             + ";" + sesion.getDuracion() + ";" + sesion.getObservaciones() + ";" + sesion.getCalificacionMejora() 
+                             + ";" + sesion.getRutTerapeuta());
                     writer.newLine();
                 }  
             }

@@ -16,13 +16,15 @@ public class SesionTerapia {
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Métodos Constructores
-    public SesionTerapia(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora) {
+    public SesionTerapia(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rutTerapeuta) {
         this.fecha = fecha;
         this.tipoTerapia = tipoTerapia;
         this.duracion = duracion;
         this.observaciones = observaciones;
         this.calificacionMejora = calificacionMejora;
+        this.rutTerapeuta = rutTerapeuta;
     }
+    
     public SesionTerapia(){
         this.fecha = null;
         this.tipoTerapia = "";

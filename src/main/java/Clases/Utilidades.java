@@ -116,6 +116,7 @@ public class Utilidades {
                 String duracion;
                 String observaciones;
                 String calificacionMejoraSTR;
+                String rutTerapeuta;
                  
                 String[] campos = linea.split(";");
                 rut = campos[0];
@@ -124,13 +125,14 @@ public class Utilidades {
                 duracion = campos[3];
                 observaciones = campos[4];
                 calificacionMejoraSTR = campos[5];
-                 
+                rutTerapeuta = campos[6];
+                
                 LocalDate fecha = LocalDate.parse(fechaSTR, formato); // Se confia que la fecha esta en el formato correcto.
                 int calificacionMejora = Integer.parseInt(calificacionMejoraSTR); // Se confia que el numero guardado en el excel es un numero.
                  
                 Paciente pacienteActual = tablaHashPacientes.get(rut);
                 if (pacienteActual != null) {
-                    SesionTerapia nuevaSesion = new SesionTerapia(fecha, tipoTerapia, duracion, observaciones, calificacionMejora);
+                    SesionTerapia nuevaSesion = new SesionTerapia(fecha, tipoTerapia, duracion, observaciones, calificacionMejora, rutTerapeuta);
                     pacienteActual.agregarSesion(nuevaSesion);
                 } else {
                     System.out.println("\nPaciente no encontrado.\n");
