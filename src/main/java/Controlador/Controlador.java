@@ -370,7 +370,7 @@ public class Controlador implements ActionListener {
                 listarS.setVisible(true);
                 return;
             } catch (NumberFormatException e) {
-                javax.swing.JOptionPane.showMessageDialog(null,"Ingrese una edad válida\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(null,"Ingrese una fecha válida\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
             return;
         }

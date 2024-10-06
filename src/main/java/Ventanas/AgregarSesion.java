@@ -14,7 +14,7 @@ public class AgregarSesion extends javax.swing.JFrame {
         DefaultTableModel modelP = (DefaultTableModel) TablaDatosPacientes.getModel();
 
         for (String registroP : arrP) {
-            String[] campos = registroP.split(", ");
+            String[] campos = registroP.split("; ");
 
             String nombre = campos[0].trim();
             String rut = campos[1].trim();
@@ -25,7 +25,7 @@ public class AgregarSesion extends javax.swing.JFrame {
         DefaultTableModel modelT = (DefaultTableModel) TablaDatosTerapeutas.getModel();
 
         for (String registroT : arrT) {
-            String[] campos = registroT.split(", ");
+            String[] campos = registroT.split("; ");
 
             String rut = campos[1].trim();
             String especialidad = campos[3].trim();
