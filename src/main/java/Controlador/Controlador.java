@@ -415,6 +415,8 @@ public class Controlador implements ActionListener {
         if (ae.getSource() == menu.getSalirPrograma()) {
             (centro.obtenerListaPacientes()).guardarPacientesCSV();
             (centro.obtenerListaPacientes()).guardarSesionesCSV();
+            (centro.obtenerListaPacientes()).exportarDatos();
+            
             menu.dispose();
             return;
         }
