@@ -103,7 +103,7 @@ public class Utilidades {
                 String observaciones;
                 String calificacionMejoraSTR;
                 String rutTerapeuta;
-                 
+                
                 String[] campos = linea.split(";");
                 rut = campos[0];
                 fechaSTR = campos[1]; 

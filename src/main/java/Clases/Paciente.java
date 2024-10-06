@@ -75,6 +75,6 @@ public class Paciente extends Persona{
     
     @Override
     public String obtenerDatos() {
-        return (getNombre() + ", " + getRut() + ", " + getEdad() + ", " + direccion + ", " + historialMedico + "\n");
+        return (getNombre() + "; " + getRut() + "; " + getEdad() + "; " + direccion + "; " + historialMedico + "\n");
     }
 }

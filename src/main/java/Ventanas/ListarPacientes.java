@@ -13,7 +13,7 @@ public class ListarPacientes extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) TablaPacientes.getModel();
         
         for (String arr1 : arr) {
-            String[] cc = arr1.split(",");
+            String[] cc = arr1.split(";");
             model.addRow(cc);
         }
     }

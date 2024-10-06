@@ -86,6 +86,6 @@ public class SesionTerapia {
     }
     
     public String obtenerDatos() {
-        return (fecha + ", " + tipoTerapia + ", " + duracion + ", " + observaciones + ", " + calificacionMejora + "\n");
+        return (fecha + "; " + tipoTerapia + "; " + duracion + "; " + observaciones + ";" + calificacionMejora + "\n");
     }
 }

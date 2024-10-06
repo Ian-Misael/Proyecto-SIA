@@ -14,7 +14,7 @@ public class ConsultaTerapeuta extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) TablaDatosTerapeutas.getModel();
 
         for (String registro : arr) {
-            String[] campos = registro.split(", ");
+            String[] campos = registro.split("; ");
 
             String nombre = campos[0].trim();
             String rut = campos[1].trim();

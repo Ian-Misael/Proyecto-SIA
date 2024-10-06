@@ -1,15 +1,15 @@
 Nombre;Rut;Edad;Direccion;Historial Medico;Cantidad De Sesiones
-Maria Gonzalez;9.876.543-2;30;Av. Las Rosas 567;Lumbalgia cronica;1
-Juan Perez;12.345.678-9;45;Calle Falsa 123;Rehabilitacion post-operatoria de rodilla;1
-Jose Ortega;11.221.122-3;29;Calle Mirador 101;Rehabilitacion tras cirugia de ligamentos cruzados;1
-Diego Salinas;7.890.123-4;20;Calle La Fuente 700;Rehabilitacion tras fractura de clavicula;1
-Pedro Ramirez;9.988.776-6;40;Calle La Paz 789;Rehabilitacion de columna vertebral;1
+Maria Gonzalez;9.876.543-2;30;Av. Las Rosas 567;Lumbalgia cronica;5
+Juan Perez;12.345.678-9;45;Calle Falsa 123;Rehabilitacion post-operatoria de rodilla;6
+Jose Ortega;11.221.122-3;29;Calle Mirador 101;Rehabilitacion tras cirugia de ligamentos cruzados;6
+Diego Salinas;7.890.123-4;20;Calle La Fuente 700;Rehabilitacion tras fractura de clavicula;6
+Pedro Ramirez;9.988.776-6;40;Calle La Paz 789;Rehabilitacion de columna vertebral;6
 Test2;33.232.323-4;40;Boror;adsad;0
-Ian Guerrero;21.584.598-2;20;Casas de Valencia;Esguince de oreja;0
-Sofia Lopez;3.344.556-6;33;Av. Los Pinos 234;Recuperacion de tendinitis en hombro;1
-Ana Morales;6.677.889-9;50;Av. Libertador 1200;Rehabilitacion post-operatoria de hernia discal;1
-Roberto Sanchez;12.344.321-8;65;Av. Providencia 456;Terapia fisica tras accidente cerebrovascular;1
-Lucia Martinez;5.566.778-8;27;Pje. El Sauce 32;Recuperacion de esguince de tobillo;2
-Marcela Vidal;5.432.167-8;35;Calle La Sierra 210;Rehabilitacion por desgarro muscular en el muslo;1
-Carlos Fernandez;11.222.333-4;52;Calle Los Alamos 321;Rehabilitacion por fractura de cadera;4
-Isabel Fuentes;9.988.001-2;60;Calle Central 5;Terapia fisica por artrosis de rodilla;1
+Ian Guerrero;21.584.598-2;20;Casas de Valencia;Esguince de oreja;1
+Sofia Lopez;3.344.556-6;33;Av. Los Pinos 234;Recuperacion de tendinitis en hombro;6
+Ana Morales;6.677.889-9;50;Av. Libertador 1200;Rehabilitacion post-operatoria de hernia discal;6
+Roberto Sanchez;12.344.321-8;65;Av. Providencia 456;Terapia fisica tras accidente cerebrovascular;6
+Lucia Martinez;5.566.778-8;27;Pje. El Sauce 32;Recuperacion de esguince de tobillo;7
+Marcela Vidal;5.432.167-8;35;Calle La Sierra 210;Rehabilitacion por desgarro muscular en el muslo;6
+Carlos Fernandez;11.222.333-4;52;Calle Los Alamos 321;Rehabilitacion por fractura de cadera;9
+Isabel Fuentes;9.988.001-2;60;Calle Central 5;Terapia fisica por artrosis de rodilla;6

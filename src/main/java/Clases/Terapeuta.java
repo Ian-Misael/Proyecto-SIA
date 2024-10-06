@@ -41,6 +41,6 @@ public class Terapeuta extends Persona {
     
     @Override
     public String obtenerDatos() {
-        return (getNombre() + ", " + getRut() + ", " + getEdad() + ", " + especialidad + "\n");
+        return (getNombre() + "; " + getRut() + "; " + getEdad() + "; " + especialidad + "\n");
     }
 }
