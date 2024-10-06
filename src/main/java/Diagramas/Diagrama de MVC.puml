@@ -4,9 +4,9 @@ title Diagrama MVC
 header Proyecto
 footer Diagrama 3
 
-
 class Controlador {
-    - Centro centro;
+    private String rutAux; 
+    private Centro centro;
 
     - MenuPrincipal menu;
     - GestionarPaciente gestionP;
@@ -16,33 +16,49 @@ class Controlador {
     - SeguimientoPaciente seguirP;
     - ListarSesiones listarS;
     - GestionarSesion gestionS;
+    - AgregarSesion agregarS;
+    - BuscarEliminarSesion buscarS;
+    - EliminarSesion eliminarS;
+    - FiltrarSesiones filtrarS;
+    - ConsultaAño consultaA;
+    - ConsultaTerapeuta consultaT;
 }
 
 class Centro {
-    - String nombre
-    - ListaPacientes pacientes
-    - ListaTerapeutas terapeutas
-
-    + Centro(String nombre)
+    - String direccion;
+    - ListaPacientes listaPacientes;
+    - ListaTerapeutas listaTerapeutas;
     
+    + Centro()
+    
+    + ListaPacientes obtenerListaPacientes()
+    + ListaTerapeutas obtenerListaTerapeutas()
 }
 
 class ListaPacientes {
-    - HashMap<String, Paciente> tablaHashPacientes
+    - HashMap<String, Paciente> tablaHashPacientes;
 
     + ListaPacientes()
-
+    
+    + Paciente getPaciente(String rut)
+    + boolean contienePaciente(String rut)
     + boolean agregarPaciente(Paciente paciente)
+    + boolean eliminarPaciente(String rut)
     + String listarPacientes()
+    + ListaSesiones getSesiones()
+    + ListaSesiones getSesiones(int anio)
+    + void guardarPacientesCSV()
+    + void guardarSesionesCSV()
 }
 
 class ListaTerapeutas {
-    - HashMap<String, Terapeuta> tablaHashterapeutas
+    - HashMap<String, Terapeuta> tablaHashTerapeutas;
 
     + ListaTerapeutas()
 
-    + boolean agregarTerapeuta(Terapeuta terapeuta)
-    + String listarTerapeutas()
+    + boolean contieneTerapeuta(String rut)
+    + Terapeuta getTerapeuta(String rut)
+    + String listarTerapeutas() 
 }
 
 interface MenuPrincipal {
@@ -85,6 +101,10 @@ interface SeguimientoPaciente {
     + JButton getCerrarSeguimientoPaciente()
 }
 
+interface ListarSesiones {
+    + JButton getCerrarListarSesiones()
+}
+
 interface GestionarSesion {
     + JButton getAgregarSesion()
     + JButton getEliminarSesion()
@@ -104,12 +124,35 @@ interface AgregarSesion {
     + JButton getCerrarAgregarSesion()
 }
 
-interface EliminarSesion {
+interface BuscarEliminarSesion {
+    + JTextField getRutBuscarSesionField()
+    + JButton getBotonBuscarRut()
+    + JButton getCerrarBuscarEliminarSesion()
+}
 
+interface EliminarSesion {
+    + JTextField getFechaEliminarField()
+    + JButton getBotonEliminarSesion()
+    + JButton getCerrarEliminarSesion()
 }
 
 interface FiltrarSesiones {
+    + JButton getFiltrarTodas()
+    + JButton getFiltrarPorAño()
+    + JButton getFiltrarPorTerapueta()
+    + JButton getCerrarFiltrarSesiones()
+}
 
+interface ConsultaAño {
+    + JTextField getAñoFiltroField()
+    + JButton getBotonFiltrar()
+    + JButton getCerrarConsultaAño()
+}
+
+interface ConsultaTerapeuta {
+    + JTextField getRutTerapeutaField()
+    + JButton getBotonFiltrar()
+    + JButton getCerrarConsultaTerapeuta()
 }
 
 Centro -up-|> Controlador : Es llamado por
@@ -122,9 +165,14 @@ AgregarPaciente -down-|> GestionarPaciente : Es Manejado
 EliminarPaciente -down-|> GestionarPaciente : Es Manejado
 ListarPacientes -down-|> GestionarPaciente : Es Manejado
 SeguimientoPaciente -down-|> MenuPrincipal : Contiene
+SeguimientoPaciente -up-|> ListarSesiones : Llama a
 GestionarSesion -down-|> MenuPrincipal : Contiene
 AgregarSesion -down-|> GestionarSesion : Es Manejado
-EliminarSesion -down-|> GestionarSesion : Es Manejado
+BuscarEliminarSesion -down-|> GestionarSesion :Es Manejado
+EliminarSesion -down-|> BuscarEliminarSesion : Es Manejado
 FiltrarSesiones -down-|> GestionarSesion : Es Manejado
-
+ConsultaAño -down-|> FiltrarSesiones : Es Manejado
+ConsultaAño -up-|> ListarSesiones : Llama a
+ConsultaTerapeuta -down-|> FiltrarSesiones : Es Manejado
+ConsultaTerapeuta -up-|> ListarSesiones : Llama a
 @enduml

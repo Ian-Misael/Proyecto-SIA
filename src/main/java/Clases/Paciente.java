@@ -2,6 +2,7 @@
 package Clases;
 
 import Colecciones.ListaSesiones;
+import java.time.LocalDate;
 
 public class Paciente extends Persona{
     
@@ -51,8 +52,25 @@ public class Paciente extends Persona{
         return sesiones.listarSesiones();
     }
     
-    public ListaSesiones ObtenerListaSesiones() {
+    public boolean eliminarSesion(LocalDate fecha) {
+        return sesiones.eliminarSesion(fecha);
+    }
+    
+    public boolean eliminarSesion(SesionTerapia sesion) {
+        return sesiones.eliminarSesion(sesion);
+    }
+    
+    public ListaSesiones obtenerListaSesiones() {
         return this.sesiones;
+    }
+    
+    public boolean mismaFecha(ListaSesiones sesiones, LocalDate fecha) {
+        for (int i = 0 ; i < sesiones.largo() ; i++) {
+            if ((sesiones.getSesion(i)).getFecha().isEqual(fecha)) {
+                return true;
+            }
+        }
+        return false;
     }
     
     @Override

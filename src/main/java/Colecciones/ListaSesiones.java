@@ -2,6 +2,7 @@
 package Colecciones;
 
 import Clases.SesionTerapia;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ListaSesiones {
@@ -13,6 +14,10 @@ public class ListaSesiones {
         this.indiceActual = -1;
     }
     
+    public SesionTerapia getSesion(int i) {
+        return lista.get(i);
+    }
+    
     public boolean agregarSesion(SesionTerapia sesion) {
         return this.lista.add(sesion);
     }
@@ -21,7 +26,25 @@ public class ListaSesiones {
         return this.lista.size();
     }
     
-    
+    public boolean eliminarSesion(LocalDate fecha) {
+        for (int i = 0 ; i < lista.size() ; i++) {
+            if (lista.get(i).getFecha().equals(fecha)) {
+                lista.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+            
+    public boolean eliminarSesion(SesionTerapia sesion) {
+        if (lista.remove(sesion)==true) {
+            System.out.println("Si");
+            return true;
+        } else {
+            System.out.println("No");
+            return false;
+        }
+    }
     
     public String listarSesiones() {
         String cadena;
@@ -31,6 +54,7 @@ public class ListaSesiones {
         }
         return cadena;
     }
+    
     public ArrayList<SesionTerapia> filtrarSesionesPorAnio(int anio) {
         ArrayList<SesionTerapia> sesionesFiltradas = new ArrayList<>();
         for (SesionTerapia sesion : lista) {

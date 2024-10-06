@@ -31,47 +31,64 @@ class Persona {
 
 class ListaPacientes {
     - HashMap<String, Paciente> tablaHashPacientes
-
+    
     + ListaPacientes()
-
+    
+    + Paciente getPaciente(String rut)
+    + boolean contienePaciente(String rut)
     + boolean agregarPaciente(Paciente paciente)
+    + boolean eliminarPaciente(String rut)
     + String listarPacientes()
+    + ListaSesiones getSesiones()
+    + ListaSesiones getSesiones(int anio)
+    + void guardarPacientesCSV()
+    + void guardarSesionesCSV()
 }
 
 class Paciente {
-    - String direccion
-    - String historial
-    - ListaSesiones sesiones
-    
+    - String direccion;
+    - String historialMedico;
+    - ListaSesiones sesiones;
+
     + Paciente(String nombre, String rut, int edad, String direccion, String historialMedico)
+    + Paciente()
 
-    + String getUbicacion()
-    + void setUbicacion(String ubicacion)
-    + String getHistorial()
-    + void setHistorial(String historial)
-
+    + String getDireccion()
+    + void setDireccion(String direccion)
+    + String getHistorialMedico()
+    + void setHistorialMedico(String historialMedico)
+    
     + void agregarSesion(SesionTerapia sesion)
     + String listarSesiones()
+    + boolean eliminarSesion(LocalDate fecha)
+    + boolean eliminarSesion(SesionTerapia sesion)
+    + ListaSesiones obtenerListaSesiones()
+    + boolean mismaFecha(ListaSesiones sesiones, LocalDate fecha)
     + String obtenerDatos()
 }
 
 class ListaTerapeutas {
-    - HashMap<String, Terapeuta> tablaHashterapeutas
-
+    - HashMap<String, Terapeuta> tablaHashTerapeutas;
+    
     + ListaTerapeutas()
-
-    + boolean agregarTerapeuta(Terapeuta terapeuta)
+    
+    + boolean contieneTerapeuta(String rut)
+    + Terapeuta getTerapeuta(String rut)
     + String listarTerapeutas()
 }
 
 class Terapeuta {
-    - String especialidad
-
+    - String especialidad;
+    - ListaSesiones sesiones;
+    
+    + Terapeuta()
     + Terapeuta(String nombre, String rut, int edad, String especialidad)
     
     + String getEspecialidad()
     + void setEspecialidad(String especialidad)
 
+    + void agregarSesion(SesionTerapia sesion)
+    + String listarSesiones() 
     + String obtenerDatos()
 }
 
@@ -79,10 +96,16 @@ class ListaSesiones {
     - ArrayList<SesionTerapia> lista
 
     + ListaSesiones()
-
+    
+    + SesionTerapia getSesion(int i)
     + boolean agregarSesion(SesionTerapia sesion)
-    + int largo()
+    + boolean eliminarSesion(LocalDate fecha)      
+    + boolean eliminarSesion(SesionTerapia sesion)
     + String listarSesiones()
+    + ArrayList<SesionTerapia> filtrarSesionesPorAnio(int anio)
+    + SesionTerapia obtenerSesionActual()
+    + SesionTerapia siguiente()
+    + void reiniciarRecorrido()
 }
 
 class SesionTerapia {
@@ -119,6 +142,7 @@ class Utilidades {
 }
 
 Centro -[#black]-* ListaPacientes : Contiene
+Centro -[#black]-* ListaTerapeutas : Contiene
 Persona --|> Paciente : Es
 Persona --|> Terapeuta : Es
 ListaPacientes --|> Paciente : Contiene

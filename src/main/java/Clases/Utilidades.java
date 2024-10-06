@@ -85,22 +85,8 @@ public class Utilidades {
             System.out.println("No se pudo leer correctamente, excepcion");
         }
     } 
-    /*
-    public static void guardarPacienteCSV(String nombre, String rut, int edad, String direccion, String historialMedico)
-    {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoPacientes.csv", true))) {
-           
-            writer.write(nombre + ";" + rut + ";" + edad + ";" + direccion + ";" + historialMedico);
-            writer.newLine();
-           
-
-        } catch (IOException e) {
-            System.out.println("algo paso, excepcion");
-        }
-    }
-    */
     
-    public static void leerArchivoSesiones(Map<String, Paciente> tablaHashPacientes)
+    public static void leerArchivoSesionesP(Map<String, Paciente> tablaHashPacientes)
     {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoSesiones.csv")))
@@ -142,6 +128,50 @@ public class Utilidades {
             System.out.println("No se pudo leer correctamente, excepcion");
         }        
     }
+    
+    public static void leerArchivoSesionesT(Map<String, Terapeuta> tablaHashTerapeuta)
+    {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoSesiones.csv")))
+        {
+            String linea;
+            linea = reader.readLine(); // Para leer lo primero (rut, nombre...)
+             
+            while ((linea = reader.readLine())!= null)
+            {
+                String rut;
+                String fechaSTR;
+                String tipoTerapia;
+                String duracion;
+                String observaciones;
+                String calificacionMejoraSTR;
+                String rutTerapeuta;
+                 
+                String[] campos = linea.split(";");
+                rut = campos[0];
+                fechaSTR = campos[1]; 
+                tipoTerapia =  campos[2];
+                duracion = campos[3];
+                observaciones = campos[4];
+                calificacionMejoraSTR = campos[5];
+                rutTerapeuta = campos[6];
+                
+                LocalDate fecha = LocalDate.parse(fechaSTR, formato); // Se confia que la fecha esta en el formato correcto.
+                int calificacionMejora = Integer.parseInt(calificacionMejoraSTR); // Se confia que el numero guardado en el excel es un numero.
+                 
+                Terapeuta terapeutaActual = tablaHashTerapeuta.get(rutTerapeuta);
+                if (terapeutaActual != null) {
+                    SesionTerapia nuevaSesion = new SesionTerapia(fecha, tipoTerapia, duracion, observaciones, calificacionMejora, rutTerapeuta);
+                    terapeutaActual.agregarSesion(nuevaSesion);
+                } else {
+                    System.out.println("\nTerapeuta no encontrado.\n");
+                }  
+            } 
+        } catch(IOException e){
+            System.out.println("No se pudo leer correctamente, excepcion");
+        }        
+    }
+    
     public static void leerArchivoTerapeutas(Map<String, Terapeuta> tablaHashTerapeutas)
     {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoTerapeutas.csv")))
@@ -172,22 +202,47 @@ public class Utilidades {
         }
     } 
     
-    /*
-    public static void guardarSesionesCSV(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rut)
+    public static void leerArchivoSesionesTerapeuta(Map<String, Terapeuta> tablaHashTerapeutas)
     {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String fechaSTR = fecha.format(formato);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoSesiones.csv", true))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Datos/listadoSesiones.csv")))
+        {
+            String linea;
+            linea = reader.readLine(); // Para leer lo primero (rut, nombre...)
              
-            writer.write(rut + ";" + fechaSTR + ";" + tipoTerapia + ";" + duracion + ";" + observaciones + ";" + calificacionMejora);
-            writer.newLine();
-           
-
-        } catch (IOException e) {
-            System.out.println("algo paso, excepcion");
-        }
-
+            while ((linea = reader.readLine())!= null)
+            {
+                String rut;
+                String fechaSTR;
+                String tipoTerapia;
+                String duracion;
+                String observaciones;
+                String calificacionMejoraSTR;
+                String rutTerapeuta;
+                 
+                String[] campos = linea.split(";");
+                rut = campos[0];
+                fechaSTR = campos[1]; 
+                tipoTerapia =  campos[2];
+                duracion = campos[3];
+                observaciones = campos[4];
+                calificacionMejoraSTR = campos[5];
+                rutTerapeuta = campos[6];
+                
+                LocalDate fecha = LocalDate.parse(fechaSTR, formato); // Se confia que la fecha esta en el formato correcto.
+                int calificacionMejora = Integer.parseInt(calificacionMejoraSTR); // Se confia que el numero guardado en el excel es un numero.
+                 
+                Terapeuta terapeutaActual = tablaHashTerapeutas.get(rutTerapeuta);
+                if (terapeutaActual != null) {
+                    SesionTerapia nuevaSesion = new SesionTerapia(fecha, tipoTerapia, duracion, observaciones, calificacionMejora, rutTerapeuta);
+                    //terapeutaActual.agregarSesion(nuevaSesion);
+                } else {
+                    System.out.println("\nTerapeuta no encontrado.\n");
+                }  
+            } 
+        } catch(IOException e){
+            System.out.println("No se pudo leer correctamente, excepcion");
+        }        
     }
-    */
 }
 

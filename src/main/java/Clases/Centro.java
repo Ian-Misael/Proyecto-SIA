@@ -1,17 +1,24 @@
 
 package Clases;
 
-import java.util.ArrayList;
+import Colecciones.*;
 
 public class Centro {
     private String direccion;
-    private ArrayList<Paciente> pacientes;
-    private ArrayList<Terapeuta> terapeutas;
+    private ListaPacientes listaPacientes;
+    private ListaTerapeutas listaTerapeutas;
     
     public Centro() {
         direccion = "Quilpue";
-        pacientes = new ArrayList();
-        terapeutas = new ArrayList();
+        listaPacientes = new ListaPacientes();
+        listaTerapeutas = new ListaTerapeutas();
     }
     
+    public ListaPacientes obtenerListaPacientes() {
+        return listaPacientes;
+    }
+    
+    public ListaTerapeutas obtenerListaTerapeutas() {
+        return listaTerapeutas;
+    }
 }

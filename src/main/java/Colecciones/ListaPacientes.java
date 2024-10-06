@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListaPacientes {
@@ -17,7 +18,7 @@ public class ListaPacientes {
         this.tablaHashPacientes = new HashMap<>();
         // Se ingresan Datos
         Utilidades.leerArchivoPacientes(this.tablaHashPacientes);
-        Utilidades.leerArchivoSesiones(this.tablaHashPacientes); 
+        Utilidades.leerArchivoSesionesP(this.tablaHashPacientes); 
     }
     
     public Paciente getPaciente(String rut) {
@@ -51,9 +52,31 @@ public class ListaPacientes {
         cadena = "";
         for (Paciente paciente : this.tablaHashPacientes.values()) {
             cadena += paciente.obtenerDatos();
-            //cadena += paciente.listarSesiones();
         }
         return cadena;
+    }
+    
+    public ListaSesiones getSesiones() {
+        ListaSesiones todasLasSesiones = new ListaSesiones();
+        for (Paciente paciente : tablaHashPacientes.values()) {
+            ListaSesiones sesionesPaciente = paciente.obtenerListaSesiones();
+            for (int i = 0; i < sesionesPaciente.largo(); i++) {
+                todasLasSesiones.agregarSesion(sesionesPaciente.getSesion(i));
+            }
+        }
+        return todasLasSesiones;
+    }
+    
+    public ListaSesiones getSesiones(int anio) {
+        ListaSesiones sesionesAnio = new ListaSesiones();
+        for (Paciente paciente : tablaHashPacientes.values()) {
+            ListaSesiones sesionesPaciente = paciente.obtenerListaSesiones();
+            ArrayList<SesionTerapia> sesionesFiltradas = sesionesPaciente.filtrarSesionesPorAnio(anio);
+            for (SesionTerapia sesion : sesionesFiltradas) {
+                sesionesAnio.agregarSesion(sesion);
+            }
+        }
+        return sesionesAnio;
     }
     
     public void guardarPacientesCSV()
@@ -75,16 +98,15 @@ public class ListaPacientes {
         }
 
     }
+    
     public void guardarSesionesCSV()
     {
-
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoSesiones.csv", false))) {
 
             writer.write("Rut ; Fecha ; Tipo de terapia ; Duracion ; Observaciones ; calificacion de mejora; RUT TERAPEUTA");
             writer.newLine();
             for (Paciente paciente : this.tablaHashPacientes.values()) {
-                ListaSesiones sesiones = paciente.ObtenerListaSesiones();
+                ListaSesiones sesiones = paciente.obtenerListaSesiones();
                 sesiones.reiniciarRecorrido();
                 for (int i = 0; i < sesiones.largo() ; i++)
                 {
@@ -101,13 +123,9 @@ public class ListaPacientes {
                     writer.newLine();
                 }  
             }
-
-
-
         } catch (IOException e) {
             System.out.println("Error al guardar las sesiones");
         }
-
     }
 }
 

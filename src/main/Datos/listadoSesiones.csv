@@ -4,6 +4,7 @@ Rut ; Fecha ; Tipo de terapia ; Duracion ; Observaciones ; calificacion de mejor
 11.221.122-3;23/09/2024;Rehabilitacion de ligamentos cruzados;45 min;Paciente ha mejorado notablemente la movilidad;9;15.654.321-1
 7.890.123-4;26/09/2024;Rehabilitacion de clavicula;30 min;Movilidad recuperada casi por completo;9;17.345.678-3
 9.988.776-6;19/09/2024;Rehabilitacion de columna;55 min;"Sin dolor significativo, progreso favorable";8;11.987.654-7
+21.584.598-2;10/04/2004;Escoleosis;1 hora;Ansiedad;3;15.654.321-1
 3.344.556-6;20/09/2024;Terapia de estiramientos de hombro;35 min;"Mejor movilidad, pero persiste el dolor leve";7;18.345.672-4
 6.677.889-9;22/09/2024;Terapia post-cirugia de hernia discal;50 min;"Avances positivos, pero requiere mas sesiones";7;13.654.987-5
 12.344.321-8;21/09/2024;Terapia fisica post-ACV;60 min;Progresos en la movilidad de extremidades superiores;8;12.345.678-9
@@ -11,10 +12,7 @@ Rut ; Fecha ; Tipo de terapia ; Duracion ; Observaciones ; calificacion de mejor
 5.566.778-8;26/09/2024;Terapia de equilibrio y propiocepcion;40 min;si;10;15.654.321-1
 5.432.167-8;25/09/2024;Terapia de fortalecimiento muscular;45 min;Mejora gradual en el musculo afectado;7;17.345.678-3
 11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;11.987.654-7
-11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;18.345.672-4
-11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;13.654.987-5
-11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;14.345.678-6
-11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;12.345.678-9
-11.222.333-4;17/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;19.876.543-2
-11.222.333-4;12/12/2012;Terapia de fortalecimiento muscular;;ta bien;10;12.345.678-9
+11.222.333-4;18/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;18.345.672-4
+11.222.333-4;19/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;13.654.987-5
+11.222.333-4;20/09/2024;Terapia de fortalecimiento muscular;50 min;Aumento en la fuerza de la cadera;9;14.345.678-6
 9.988.001-2;24/09/2024;Terapia de rodilla;50 min;Disminucion del dolor y mejora de la movilidad;8;15.654.321-1
