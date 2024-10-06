@@ -127,5 +127,25 @@ public class ListaPacientes {
             System.out.println("Error al guardar las sesiones");
         }
     }
+    
+    public void exportarDatos()
+    {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/DatosExportados/datosPacientes.csv", false))) {
+
+            writer.write("Nombre;Rut;Edad;Direccion;Historial Medico;Cantidad De Sesiones");
+            writer.newLine();
+            for (Paciente paciente : this.tablaHashPacientes.values()) {
+                ListaSesiones sesiones = paciente.obtenerListaSesiones();
+                int cantidadSesiones = sesiones.largo();
+                
+                 writer.write(paciente.getNombre() + ";" + paciente.getRut() + ";" + paciente.getEdad() +
+                        ";" + paciente.getDireccion() + ";" + paciente.getHistorialMedico() + ";" + cantidadSesiones);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al exportar los datos.");
+        }
+    
+    }
 }
 
