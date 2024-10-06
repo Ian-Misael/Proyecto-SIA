@@ -52,12 +52,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="Fondo" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="GestionarSesiones" min="-2" pref="180" max="-2" attributes="0"/>
-                      <Component id="SalirPrograma" min="-2" pref="180" max="-2" attributes="0"/>
-                      <Component id="SeguimientoPaciente" min="-2" pref="180" max="-2" attributes="0"/>
-                      <Component id="GestionarPacientes" min="-2" pref="180" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="GestionarSesiones" max="32767" attributes="0"/>
+                      <Component id="SalirPrograma" max="32767" attributes="0"/>
+                      <Component id="SeguimientoPaciente" max="32767" attributes="0"/>
+                      <Component id="GestionarPacientes" max="32767" attributes="0"/>
+                      <Component id="Exportar" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -68,15 +69,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="Fondo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="GestionarPacientes" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="SeguimientoPaciente" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="GestionarSesiones" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="Exportar" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="SalirPrograma" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -138,6 +141,11 @@
         <Component class="javax.swing.JButton" name="GestionarSesiones">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gestionar Sesiones"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="Exportar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exportar"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -39,6 +39,7 @@ public class Controlador implements ActionListener {
         menu.getSeguimientoPaciente().addActionListener(this);
         menu.getGestionarSesiones().addActionListener(this);
         menu.getSalirPrograma().addActionListener(this);
+        menu.getExportar().addActionListener(this);
         
         menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         menu.setVisible(true);
@@ -409,6 +410,12 @@ public class Controlador implements ActionListener {
         if (listarS != null && ae.getSource() == listarS.getCerrarListarSesiones()) {
             listarS.dispose();
             return;
+        }
+        
+        // =========== Acciones Botón Exportar ===========
+        if (ae.getSource() == menu.getExportar()) {
+            centro.obtenerListaPacientes().exportarDatos();
+            javax.swing.JOptionPane.showMessageDialog(null,"Documento exportado exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
         
         // =========== Cerrar Programa ===========
