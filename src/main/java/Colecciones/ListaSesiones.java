@@ -14,6 +14,7 @@ public class ListaSesiones {
         this.indiceActual = -1;
     }
     
+    
     public SesionTerapia getSesion(int i) {
         return lista.get(i);
     }
@@ -26,6 +27,7 @@ public class ListaSesiones {
         return this.lista.size();
     }
     
+    // Elimina una sesion de la lista a través de su fecha
     public boolean eliminarSesion(LocalDate fecha) {
         for (int i = 0 ; i < lista.size() ; i++) {
             if (lista.get(i).getFecha().equals(fecha)) {
@@ -35,7 +37,8 @@ public class ListaSesiones {
         }
         return false;
     }
-            
+    
+    // Elimina la sesion a través del objeto.
     public boolean eliminarSesion(SesionTerapia sesion) {
         if (lista.remove(sesion)==true) {
             System.out.println("Si");
@@ -46,6 +49,7 @@ public class ListaSesiones {
         }
     }
     
+    // Muestra las sesiones
     public String listarSesiones() {
         String cadena;
         cadena = "";
@@ -55,6 +59,7 @@ public class ListaSesiones {
         return cadena;
     }
     
+    // Encargado de sobreescribir una sesion dada.
     public boolean sobreescribirSesion(SesionTerapia nuevaSesion) {
         LocalDate fechaNuevaSesion = nuevaSesion.getFecha();
         for (int i = 0; i < lista.size(); i++) {
@@ -67,6 +72,7 @@ public class ListaSesiones {
         return false;
     }
     
+    // Encargado de mostrar las sesiones filtradas por año
     public ArrayList<SesionTerapia> filtrarSesionesPorAnio(int anio) {
         ArrayList<SesionTerapia> sesionesFiltradas = new ArrayList<>();
         for (SesionTerapia sesion : lista) {
@@ -77,6 +83,7 @@ public class ListaSesiones {
         return sesionesFiltradas;
     }
     
+    // Obtiene la sesion actual donde se encuentra el indice
     public SesionTerapia obtenerSesionActual() {
         if (indiceActual >= 0 && indiceActual < lista.size()) {
             return lista.get(indiceActual);
@@ -84,6 +91,8 @@ public class ListaSesiones {
             return null; // No hay sesión actual válida
         }
     }
+    
+    // Mueve el indice al siguiente
     public SesionTerapia siguiente() {
         if (indiceActual < lista.size() - 1) {
             indiceActual++;
@@ -92,7 +101,8 @@ public class ListaSesiones {
             return null; // Ya estamos en la última sesión
         }
     }
-
+    
+    // Reinicia el indice a -1
     public void reiniciarRecorrido() {
         this.indiceActual = -1; // Resetea el índice
     }        
