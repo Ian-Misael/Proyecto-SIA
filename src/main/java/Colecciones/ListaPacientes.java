@@ -21,15 +21,18 @@ public class ListaPacientes {
         Utilidades.leerArchivoSesionesP(this.tablaHashPacientes); 
     }
     
+    // Retorna el Objeto paciente a través de su rut
     public Paciente getPaciente(String rut) {
         Paciente pacienteAux = tablaHashPacientes.get(rut);
         return pacienteAux;
     }
     
+    // Verifica si el objeto Paciente se encuentra.
     public boolean contienePaciente(String rut){
         return tablaHashPacientes.containsKey(rut);
     }
     
+    // Encargado de agregar el paciente a la tabla hash
     public boolean agregarPaciente(Paciente paciente) {
         String rut = paciente.getRut();
         if(this.tablaHashPacientes.containsKey(rut)) {
@@ -39,6 +42,7 @@ public class ListaPacientes {
         return true;
     } 
     
+    // Encargado de eliminar el paciente
     public boolean eliminarPaciente(String rut) {
         if(this.tablaHashPacientes.containsKey(rut)) {
             this.tablaHashPacientes.remove(rut);
@@ -47,6 +51,7 @@ public class ListaPacientes {
         return false;
     }
     
+   // Encargado de generar mostrar todos los pacientes de la tabla hash
     public String listarPacientes() {
         String cadena;
         cadena = "";
@@ -56,6 +61,7 @@ public class ListaPacientes {
         return cadena;
     }
     
+    // Metodo encargado de obtener las sesiones 
     public ListaSesiones getSesiones() {
         ListaSesiones todasLasSesiones = new ListaSesiones();
         for (Paciente paciente : tablaHashPacientes.values()) {
@@ -67,6 +73,7 @@ public class ListaPacientes {
         return todasLasSesiones;
     }
     
+    // Metodo encargado de obtener las sesiones de un año en especifico
     public ListaSesiones getSesiones(int anio) {
         ListaSesiones sesionesAnio = new ListaSesiones();
         for (Paciente paciente : tablaHashPacientes.values()) {
@@ -79,6 +86,7 @@ public class ListaPacientes {
         return sesionesAnio;
     }
     
+    // Encargado de guardar y conseguir la persistencia de los datos.
     public void guardarPacientesCSV()
     {
 
@@ -99,6 +107,7 @@ public class ListaPacientes {
 
     }
     
+    // Encargado de guardar y conseguir la persistencia de los datos.
     public void guardarSesionesCSV()
     {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/Datos/listadoSesiones.csv", false))) {
@@ -128,6 +137,7 @@ public class ListaPacientes {
         }
     }
     
+    // Encargado de generar un archivo y exportar los datos.
     public void exportarDatos()
     {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/DatosExportados/datosPacientes.csv", false))) {
