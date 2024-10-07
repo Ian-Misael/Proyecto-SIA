@@ -13,7 +13,7 @@ public class SesionTerapia {
     private String duracion;
     private String observaciones;
     private int calificacionMejora;
-    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Formato que tendran las fechas.
 
     // Métodos Constructores
     public SesionTerapia(LocalDate fecha, String tipoTerapia, String duracion, String observaciones, int calificacionMejora, String rutTerapeuta) {
@@ -39,6 +39,7 @@ public class SesionTerapia {
     }
 
     public void setRutTerapeuta(String rutTerapeuta) throws RutInvalidoException{
+        // Verifica que no haya letras entre a-j o A-J en todo el string, excepto 'k' o 'K' solo al final
         if (!rutTerapeuta.matches("\\d{1,2}(\\.\\d{3}){2}-[0-9kK]")) {
             throw new RutInvalidoException();
         }
@@ -85,6 +86,8 @@ public class SesionTerapia {
         this.calificacionMejora = calificacionMejora;
     }
     
+    // Sobreescritura de metodos
+    // Retorna los datos de una sesion en especifico.
     public String obtenerDatos() {
         return (fecha + "; " + tipoTerapia + "; " + duracion + "; " + observaciones + ";" + calificacionMejora + "\n");
     }
