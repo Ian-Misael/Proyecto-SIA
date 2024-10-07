@@ -48,11 +48,12 @@ public class Persona {
 
     public void setEdad(int edad) throws EdadInvalidaException {
         if (edad < 0 || edad > 120) {
-            throw new EdadInvalidaException();
+            throw new EdadInvalidaException(); // Excepcion personalizada, se puede encontrar en la carpeta errores.
         }
         this.edad = edad;
     }
-    
+    // Sobreescritura de metodos
+    // Metodo encargado de retornar los datos de la persona.
     public String obtenerDatos() {
         return (nombre + ", " + rut + ", " + edad + "\n");
     }
