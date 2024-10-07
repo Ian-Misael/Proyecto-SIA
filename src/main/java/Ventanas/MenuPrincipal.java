@@ -120,6 +120,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JButton getGestionarSesiones() {
         return GestionarSesiones;
     }
+    
     public JButton getExportar() {
         return Exportar;
     }

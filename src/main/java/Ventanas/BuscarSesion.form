@@ -121,7 +121,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese rut del paciente para eliminar sesiones:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese rut del paciente para ver sus sesiones:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="RutBuscarSesionField">

@@ -5,9 +5,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class BuscarEliminarSesion extends javax.swing.JFrame {
+public class BuscarSesion extends javax.swing.JFrame {
 
-    public BuscarEliminarSesion(String datos) {
+    public BuscarSesion(String datos) {
         initComponents();
         
         String[] arr = datos.split("\n");
@@ -55,7 +55,7 @@ public class BuscarEliminarSesion extends javax.swing.JFrame {
             TablaDatos.getColumnModel().getColumn(0).setMaxWidth(200);
         }
 
-        jLabel2.setText("Ingrese rut del paciente para eliminar sesiones:");
+        jLabel2.setText("Ingrese rut del paciente para ver sus sesiones:");
 
         CerrarBuscarEliminarSesion.setText("Cerrar");
 
@@ -119,7 +119,7 @@ public class BuscarEliminarSesion extends javax.swing.JFrame {
         return BotonBuscarRut;
     }
     
-    public JButton getCerrarBuscarEliminarSesion() {
+    public JButton getCerrarBuscarSesion() {
         return CerrarBuscarEliminarSesion;
     }
 

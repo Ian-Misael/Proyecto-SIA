@@ -16,8 +16,9 @@ class Controlador {
     - SeguimientoPaciente seguirP;
     - ListarSesiones listarS;
     - GestionarSesion gestionS;
+    - EditarSesion editarS;
     - AgregarSesion agregarS;
-    - BuscarEliminarSesion buscarS;
+    - BuscarSesion buscarS;
     - EliminarSesion eliminarS;
     - FiltrarSesiones filtrarS;
     - ConsultaAño consultaA;
@@ -65,6 +66,7 @@ interface MenuPrincipal {
     + JButton getGestionarPacientes()
     + JButton getSeguimientoPaciente()
     + JButton getGestionarSesiones()
+    + JButton getExportar()
     + JButton getSalirPrograma()
 }
 
@@ -106,10 +108,22 @@ interface ListarSesiones {
 }
 
 interface GestionarSesion {
+    + JButton getEditarSesion()
     + JButton getAgregarSesion()
     + JButton getEliminarSesion()
     + JButton getFiltrarSesiones()
     + JButton getCerrarGestionarSesion()
+}
+
+interface EditarSesion {
+    + JTextField getRutTerapeutaField()
+    + JTextField getFechaField()
+    + JTextField getTipoTerapiaField()
+    + JTextField getDuracionField()
+    + JTextField getObservacionesField()
+    + JTextField getMejoraField()
+    + JButton getBotonEditar()
+    + JButton getCerrarEditarSesion()
 }
 
 interface AgregarSesion {
@@ -124,10 +138,10 @@ interface AgregarSesion {
     + JButton getCerrarAgregarSesion()
 }
 
-interface BuscarEliminarSesion {
+interface BuscarSesion {
     + JTextField getRutBuscarSesionField()
     + JButton getBotonBuscarRut()
-    + JButton getCerrarBuscarEliminarSesion()
+    + JButton getCerrarBuscarSesion()
 }
 
 interface EliminarSesion {
@@ -167,9 +181,11 @@ ListarPacientes -down-|> GestionarPaciente : Es Manejado
 SeguimientoPaciente -down-|> MenuPrincipal : Contiene
 SeguimientoPaciente -up-|> ListarSesiones : Llama a
 GestionarSesion -down-|> MenuPrincipal : Contiene
+BuscarSesion --|> GestionarSesion : Es Manejado
+EditarSesion --|> BuscarSesion : Es Manejado
 AgregarSesion -down-|> GestionarSesion : Es Manejado
-BuscarEliminarSesion -down-|> GestionarSesion :Es Manejado
-EliminarSesion -down-|> BuscarEliminarSesion : Es Manejado
+BuscarSesion -down-|> GestionarSesion :Es Manejado
+EliminarSesion -down-|> BuscarSesion : Es Manejado
 FiltrarSesiones -down-|> GestionarSesion : Es Manejado
 ConsultaAño -down-|> FiltrarSesiones : Es Manejado
 ConsultaAño -up-|> ListarSesiones : Llama a

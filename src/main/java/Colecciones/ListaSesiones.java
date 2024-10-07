@@ -55,6 +55,18 @@ public class ListaSesiones {
         return cadena;
     }
     
+    public boolean sobreescribirSesion(SesionTerapia nuevaSesion) {
+        LocalDate fechaNuevaSesion = nuevaSesion.getFecha();
+        for (int i = 0; i < lista.size(); i++) {
+            SesionTerapia sesionActual = lista.get(i);
+            if (sesionActual.getFecha().equals(fechaNuevaSesion)) {
+                lista.set(i, nuevaSesion);
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public ArrayList<SesionTerapia> filtrarSesionesPorAnio(int anio) {
         ArrayList<SesionTerapia> sesionesFiltradas = new ArrayList<>();
         for (SesionTerapia sesion : lista) {

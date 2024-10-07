@@ -23,8 +23,9 @@ public class Controlador implements ActionListener {
     private SeguimientoPaciente seguirP;
     private ListarSesiones listarS;
     private GestionarSesion gestionS;
+    private EditarSesion editarS;
     private AgregarSesion agregarS;
-    private BuscarEliminarSesion buscarS;
+    private BuscarSesion buscarS;
     private EliminarSesion eliminarS;
     private FiltrarSesiones filtrarS;
     private ConsultaAño consultaA;
@@ -186,6 +187,7 @@ public class Controlador implements ActionListener {
         // =========== Acciones de Ventana Gestionar Sesión ===========
         if (ae.getSource() == menu.getGestionarSesiones()) {
             gestionS = new GestionarSesion(centro.obtenerListaPacientes());
+            gestionS.getEditarSesion().addActionListener(this);
             gestionS.getAgregarSesion().addActionListener(this);
             gestionS.getEliminarSesion().addActionListener(this);
             gestionS.getFiltrarSesiones().addActionListener(this);
@@ -195,6 +197,80 @@ public class Controlador implements ActionListener {
         }
         if (gestionS != null && ae.getSource() == gestionS.getCerrarGestionarSesion()) {
             gestionS.dispose();
+            return;
+        }
+        
+        // =========== Acciones de Ventana Buscar para Editar Sesión ===========
+        if (gestionS != null && ae.getSource() == gestionS.getEditarSesion()) {
+            gestionS.dispose();
+            buscarS = new BuscarSesion((centro.obtenerListaPacientes()).listarPacientes());
+            buscarS.getBotonBuscarRut().addActionListener(this);
+            buscarS.getCerrarBuscarSesion().addActionListener(this);
+            buscarS.setVisible(true);
+            return;
+        }
+        if (buscarS != null && ae.getSource() == buscarS.getCerrarBuscarSesion()) {
+            buscarS.dispose();
+            return;
+        }
+        
+        // =========== Acciones de Ventana Editar Sesión ===========
+        if (buscarS != null && ae.getSource() == buscarS.getBotonBuscarRut()) {
+            buscarS.dispose();
+            rutAux = Utilidades.formatearRut(buscarS.getRutBuscarSesionField().getText());
+            if ((centro.obtenerListaPacientes()).contienePaciente(rutAux)) {
+                editarS = new EditarSesion((centro.obtenerListaPacientes()).getPaciente(rutAux).listarSesiones(), (centro.obtenerListaTerapeutas()).listarTerapeutas());
+                editarS.getBotonEditar().addActionListener(this);
+                editarS.getCerrarEditarSesion().addActionListener(this);
+                editarS.setVisible(true);
+                buscarS.dispose();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null,"No existe paciente con el rut especificado\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                buscarS.dispose();
+            }
+            buscarS.dispose();
+            return;
+        }
+        if (editarS != null && ae.getSource() == editarS.getBotonEditar()) {
+            try {
+                String rutTerapeuta =  Utilidades.formatearRut(editarS.getRutTerapeutaField().getText());
+                String fecha = editarS.getFechaField().getText();
+                String terapia = editarS.getTipoTerapiaField().getText();
+                String duracion = editarS.getDuracionField().getText();
+                String observaciones = editarS.getObservacionesField().getText();
+                int calificacion = Integer.parseInt(editarS.getMejoraField().getText());
+                
+                if(rutTerapeuta.equals("") || fecha.equals("") || terapia.equals("") || duracion.equals("") || observaciones.equals("")) {
+                    javax.swing.JOptionPane.showMessageDialog(null,"Rellene todos los campos\n", "AVISO", javax.swing.JOptionPane.WARNING_MESSAGE);
+                    editarS.dispose();
+                    return;
+                }
+                
+                SesionTerapia sesion = new SesionTerapia();
+                sesion.setRutTerapeuta(rutTerapeuta);
+                sesion.setFecha(fecha);
+                sesion.setTipoTerapia(terapia);
+                sesion.setDuracion(duracion);
+                sesion.setObservaciones(observaciones);
+                sesion.setCalificacionMejora(calificacion);
+                
+                if ((centro.obtenerListaPacientes()).getPaciente(rutAux).obtenerListaSesiones().sobreescribirSesion(sesion)) {
+                    javax.swing.JOptionPane.showMessageDialog(null,"Sesión editada exitosamente\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null,"El paciente no posee sesiones con la fecha ingresada\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Ingrese una nota válida (0-10)\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (DateTimeParseException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Fecha inválida. Ingresar en formato dd/mm/yyyy\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (RutInvalidoException e) {
+                javax.swing.JOptionPane.showMessageDialog(null,"Rut invalido\n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+            editarS.dispose();
+            return;
+        }
+        if (editarS != null && ae.getSource() == editarS.getCerrarEditarSesion()) {
+            editarS.dispose();
             return;
         }
         
@@ -266,13 +342,13 @@ public class Controlador implements ActionListener {
         // =========== Acciones de Ventana Buscar para Eliminar Sesión ===========
         if (gestionS != null && ae.getSource() == gestionS.getEliminarSesion()) {
             gestionS.dispose();
-            buscarS = new BuscarEliminarSesion((centro.obtenerListaPacientes()).listarPacientes());
+            buscarS = new BuscarSesion((centro.obtenerListaPacientes()).listarPacientes());
             buscarS.getBotonBuscarRut().addActionListener(this);
-            buscarS.getCerrarBuscarEliminarSesion().addActionListener(this);
+            buscarS.getCerrarBuscarSesion().addActionListener(this);
             buscarS.setVisible(true);
             return;
         }
-        if (buscarS != null && ae.getSource() == buscarS.getCerrarBuscarEliminarSesion()) {
+        if (buscarS != null && ae.getSource() == buscarS.getCerrarBuscarSesion()) {
             buscarS.dispose();
             return;
         }
